@@ -1,0 +1,564 @@
+openSAP logo
+
+Channels
+Courses
+
+Further Learning
+News
+
+English
+
+SAP Master Data Integration in the Intelligent EnterpriseFeaturing experts from the MDI and MDO team
+Self-paced course
+Learnings
+Discussions
+Progress
+Collab Space
+Course Details
+Announcements
+
+Unit 4: Creating an SAP Master Data Integration instance on SAP BTP
+Duration: approx. 15 minutes
+Creating an SAP Master Data Integration instance on SAP BTP.
+
+
+
+00:15 / 14:28
+
+
+
+
+
+00:05
+Hello, and welcome to the openSAP course
+00:07
+on SAP Master Data Integration
+00:09
+in the Intelligent Enterprise.
+00:11
+This is week one, unit four,
+00:14
+Creating an SAP Master Data Integration instance on SAP BTP.
+00:20
+My name is Tobias Nett, I'm a content expert,
+00:23
+and I will guide you through this unit.
+00:26
+Let's get started.
+00:28
+This unit will guide you through the creation
+00:31
+of an SAP Master Data Integration instance
+00:35
+on the SAP Business Technology Platform.
+00:38
+We will build upon the concepts we learned about
+00:41
+in the previous unit.
+00:44
+We will start with a subaccount in the respective region
+00:49
+that you want to use SAP Master Data Integration in.
+00:52
+Then we will create a service instance
+00:55
+in the SAP BTP cockpit.
+00:58
+In that step, we will also learn
+01:00
+about general service instance information
+01:03
+and configuration.
+01:06
+Then we will create a service key
+01:10
+holding the credentials required by applications
+01:13
+to authenticate with SAP Master Data Integration.
+01:18
+Finally, we will have a brief look
+01:21
+at this authentication step, and how we can manually test it
+01:26
+to ensure that our configuration is proper.
+01:34
+At the end, I will do a demo of these steps in practice.
+01:43
+In the previous unit,
+01:45
+we learned that tenants of SAP Master Data Integration
+01:49
+are related to subaccounts
+01:51
+in the SAP Business Technology Platform,
+01:54
+and that clients of SAP Master Data Integration
+01:58
+belong to a tenant
+02:00
+where clients of the same tenant are able to share data,
+02:04
+while clients of different tenants are isolated from each other.
+02:10
+Now, we have to look at how regions come into play here.
+02:15
+Each application or service deployed in the SAP BTP
+02:20
+belongs to a region,
+02:21
+and also each subaccount belongs to a region.
+02:26
+A region corresponds to a geographical location,
+02:29
+such as Europe, the US East Coast, or Asia Pacific.
+02:35
+Selecting the right region can help to improve performance
+02:39
+for the application or the whole landscape.
+02:44
+For instance, response times and latency are usually lower
+02:48
+if a region close to the geographic location of the user is chosen.
+02:57
+Check out the SAP Discovery Center to learn in which regions
+03:01
+SAP Master Data Integration is available.
+03:10
+Now, continue by creating a new subaccount
+03:14
+in the respective region,
+03:15
+or by choosing an existing subaccount
+03:18
+in the respective region.
+03:19
+Give it a meaningful name describing the tenant
+03:22
+or landscape you are setting up.
+03:30
+Now that we have chosen a tenant for the landscape,
+03:33
+we can continue by creating service instances
+03:36
+for the clients.
+03:41
+Each client connecting to SAP Master Data Integration
+03:44
+should be reflected by an individual service instance
+03:48
+in the SAP BTP.
+03:53
+To create a service instance,
+03:55
+we go to the marketplace in the SAP BTP cockpit
+03:59
+and search for Master Data Integration.
+04:03
+Select the tile and click Create to open a dialog,
+04:08
+which will guide you through the creation
+04:10
+of the service instance.
+04:13
+On the first page of the wizard,
+04:15
+you will need to enter general information
+04:18
+about the service instance,
+04:20
+give it a meaningful name, and choose the service plan
+04:24
+that corresponds to the integration scenario.
+04:29
+Then continue to the next page.
+04:38
+On the second page of the wizard, the service instance
+04:41
+can further be configured.
+04:43
+First, it is recommended to set the business system ID
+04:47
+to identify the client in other applications,
+04:50
+such as SAP Master Data Orchestration.
+04:54
+Please note that some applications or systems
+04:58
+might have specific instructions
+04:59
+on which value to use as a business system ID.
+05:04
+If the client is intended to be a producing client,
+05:08
+please also enter the correct write permissions
+05:11
+for the respective master data types here.
+05:15
+You should also identify the SAP-branded cloud application
+05:20
+or S/4HANA on-premise system
+05:22
+in the application field.
+05:24
+The instance configuration we are doing here
+05:26
+can also be changed after the service instance is created.
+05:30
+Please see the SAP Help Portal for more information
+05:34
+on which parameters are available,
+05:37
+and how to further configure the service instance.
+05:43
+Now, finalize the service instance configuration,
+05:46
+do a final review, and then create the service instance.
+05:55
+With the newly created service instance,
+05:57
+we can now continue to create a service key for the client.
+06:04
+The service key holds the credentials
+06:07
+required to authenticate with SAP Master Data Integration
+06:15
+Note that different service keys
+06:17
+for the same service instance
+06:19
+are matched to the same client
+06:22
+by SAP Master Data Integration.
+06:24
+This can be helpful to rotate credentials
+06:28
+without changing the service instance itself.
+06:34
+Follow the steps explained in the SAP Help Portal
+06:37
+to create service keys.
+06:40
+In case you're working with service bindings,
+06:43
+the credentials will be provided
+06:45
+to the application via environment variables.
+06:54
+Clients will usually automatically use
+06:57
+the credentials provided
+06:58
+to obtain an access token to authenticate
+07:01
+with SAP Master Data Integration.
+07:04
+However, it can be helpful to understand
+07:07
+the processes behind it.
+07:09
+For instance, to troubleshoot authentication issues
+07:13
+or just to ensure that a service instance setup
+07:16
+was done properly.
+07:20
+You can follow the steps outlined
+07:22
+in getting an application access token
+07:25
+from the SAP Help Portal
+07:28
+using the OAuth2 client credentials in the service key.
+07:37
+Beside the client credentials flow,
+07:39
+SAP Master Data Integration
+07:41
+offers other authentication variants.
+07:44
+For instance, OAuth2-based authentication with mutual TLS.
+07:50
+Check the documentation
+07:52
+of both Master Data Integration service
+07:55
+and the respective client application for more details.
+08:00
+Let's apply these steps in practice
+08:02
+and create a new service instance
+08:05
+in the SAP Business Technology Platform.
+08:08
+Here we are in the subaccount
+08:10
+that we will be using for this openSAP course.
+08:14
+You can see here that the selected region
+08:17
+is Europe, Frankfurt.
+08:20
+I have already enabled the Cloud Foundry environment,
+08:25
+as you can see down here.
+08:28
+Let's create a service instance.
+08:31
+Go to the Service Marketplace
+08:33
+and search for Master Data Integration.
+08:39
+When you click on the tile,
+08:41
+you can see an overview of the service offering,
+08:44
+links to the documentation, and the Discovery Center,
+08:48
+as well as available service plans.
+08:51
+Click on Create to create a new instance.
+08:56
+For the runtime environment, we choose Cloud Foundry
+09:00
+and one of the available spaces,
+09:03
+in our case, the Dev Landscape space.
+09:08
+Give the instance a name.
+09:10
+I'm using a code name here.
+09:11
+Let's call it wonky-wombat.
+09:14
+Obviously, you would choose a proper name
+09:17
+for the service instance
+09:18
+depending on the client you want to set up.
+09:23
+Continue by clicking Next.
+09:27
+Now, we are presented with an input form
+09:30
+to configure and customize the instance.
+09:35
+Choose a human-readable name for the businessSystemId.
+09:40
+I'm using the code name wonky-wombat once again.
+09:48
+Keep the default value for enableTenantDeletion.
+09:54
+We can remove the logSys field
+09:57
+as we don't want to configure it right now.
+10:01
+We also want to pretend that our wonky-wombat
+10:04
+is an S/4HANA application
+10:06
+so we change the application from "ariba" to "s4".
+10:11
+Since the client should be able to write
+10:13
+master data records,
+10:15
+we need to set the corresponding write permissions as well.
+10:33
+After clicking on Next,
+10:34
+we can do a final review of the service instance.
+10:38
+If everything looks good,
+10:40
+click on Create to actually create the instance.
+10:45
+This may take a moment.
+10:52
+When going to the instance overview,
+10:55
+you can also get there by clicking on instances
+10:58
+and subscriptions on the left-hand side.
+11:04
+We can now see that the instance is currently being created.
+11:21
+Once the instance is created,
+11:23
+we can navigate to the details by clicking on the arrow.
+11:33
+To continue, we want to create a service key.
+11:38
+Therefore, click on Create,
+11:41
+and the wizard will open up once again.
+11:47
+Choose a reasonable name for the key,
+11:50
+can be as simple as "default".
+11:53
+You may want to include the date of creation in the name
+11:57
+to easily identify service keys
+11:59
+that might be compromised or should be rotated.
+12:09
+Click on Create to create the service key.
+12:13
+We can now view the service key credentials
+12:15
+by clicking on the key, or by clicking View Credentials.
+12:24
+You can select the form view
+12:26
+to get a formatted representation of the JSON data,
+12:29
+which might be a bit easier to use and read.
+12:36
+I have prepared a Visual Studio Code REST session
+12:40
+in which we can use the client ID, client secret,
+12:44
+and XSUAA URL to retrieve an application access token
+12:49
+to test the instance creation.
+12:54
+Copy over the client ID and client secret,
+12:58
+as well as the URL
+13:01
+from the UAA section of the service key.
+13:19
+When we now send a POST request to the token endpoint of the XSUAA,
+13:26
+using basic authentication with client credentials,
+13:30
+we will see a positive response from the service,
+13:33
+containing an access token to be used for authentication
+13:38
+with SAP Master Data Integration.
+13:43
+With that, we are at the end of the demo.
+13:47
+In this unit, we have used a subaccount
+13:50
+on the SAP Business Technology Platform
+13:53
+for a tenant of SAP Master Data Integration
+13:56
+to set up a client by creating a service instance
+14:01
+in that subaccount.
+14:07
+Finally, we have created a service key
+14:10
+for that service instance
+14:12
+and used the credentials to obtain an access token.
+14:17
+Now we have reached the end of the unit.
+14:19
+Thanks for joining in, and enjoy the next unit.
+Discussion topics
+9 topics
+(00:00)
+Not able to create MDI instance
+10 replies
+Hi Team,
+
+I get the below error which I create the MDI instance: Service broker error: Service broker one-mds-service-broker failed with: Trial is...
+
+Read more
+(00:00)
+Testing Service Key
+1 reply
+What tool did you use to test the service key. Where you copied the urls and client details then tested connection?
+
+Read more
+(00:00)
+Tenants: Isolation vs sharing data question
+6 replies
+In the past unit and this one, it's clarified that only clients on the same tenant can share data and that clients in different tenants are...
+
+Read more
+(00:00)
+Multiple Regions
+1 reply
+If my customer presense is across multiple regions can I create an Instace which serves to multiple regions?
+
+Read more
+(00:00)
+can't create instance
+1 reply
+I see an error: Service broker error: Service broker one-mds-service-broker failed with: Trial is not supported, this service plan must only be...
+
+Read more
+(00:00)
+Sad that learners can't practice this lesson without a charge account !
+2 replies
+It's so sad and disheartening that there is not a free access option in the form of a "Trial" or "Learner" account in SAP Discovery, at least for...
+
+Read more
+(00:00)
+How are 'Write Permissions' for master data are set up
+1 reply
+From Where did you copy the write permissions that are shown in the video.
+
+Are they same for all other SAP clod applications like SuccessFactors,...
+
+Read more
+(00:00)
+BTP Service Marketplace
+6 replies
+where do I go to get to BTP Service Marketplace?
+
+Read more
+(00:00)
+video not working
+5 replies
+Is anyone else having problem with video url
+
+Read more
+
+The discussions for this course are read-only. No new topics or replies can be created.
+
+‹
+Previous
+
+Unit 3: Self-test
+Next
+
+Unit 4: Self-test
+›
+Hide navigation
+Overview
+Week 1
+Assignment Week 1
+Discussions
+Week 2
+Week 3
+I Like, I Wish
+Final Exam
+More information
+About Us
+Course Reactivation
+Blog
+SAP Learning
+Polls
+Help
+FAQ
+Certificate Guidelines
+Digital Badges
+Code of Honor
+Forum Rules
+Peer Assessment
+Helpdesk
+Follow us
+X, formerly Twitter
+SAP Community Network
+About openSAP
+openSAP is SAP’s free learning platform for everyone interested in learning about SAP’s latest innovations and how to survive in the digital economy. openSAP Enterprise MOOCs are complete courses, and learners can earn a certificate to demonstrate the knowledge they’ve acquired. Complementary learning opportunities exist in the form of openSAP Podcasts and openSAP Microlearning.
+
+Download on the App StoreGet it on Google Play
+© 2013 - 2024 Copyright SAP – Legal DisclosurePrivacyTerms of UseCookie StatementCookie 喜好设置Powered by HPIopenHPI (r8551)
+
