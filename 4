@@ -1,0 +1,343 @@
+openSAP logo
+
+Channels
+Courses
+
+Further Learning
+News
+
+English
+
+SAP Master Data Integration in the Intelligent EnterpriseFeaturing experts from the MDI and MDO team
+Self-paced course
+Learnings
+Discussions
+Progress
+Collab Space
+Course Details
+Announcements
+
+Unit 3: How to set up an SAP Master Data Integration tenant and service instance
+Duration: approx. 9 minutes
+on SAP Master Data Integration in the Intelligent Enterprise.This is week one, unit three.
+
+
+
+00:11 / 08:45
+
+
+
+
+
+00:05
+Welcome to the openSAP course
+00:07
+on SAP Master Data Integration in the Intelligent Enterprise.
+00:11
+This is week one, unit three.
+00:14
+How to set up an SAP Master Data Integration tenant and service instance.
+00:20
+My name is Tobias Nett,
+00:21
+I'm a content expert,
+00:23
+and I will guide you through this unit.
+00:25
+Let's get started.
+00:27
+In this unit we will first look at
+00:29
+the prerequisites required to use SAP Master Data Integration.
+00:34
+Then we will learn about tenants and clients
+00:37
+and how they relate to concepts in the SAP Business Technology Platform.
+00:43
+In particular, we will look at the differences
+00:46
+and similarities of producing and consuming clients.
+00:51
+Finally, we will look at service plans
+00:54
+offered by SAP Master Data Integration.
+00:58
+To get started with SAP Master Data Integration
+01:01
+you need a global enterprise account
+01:03
+in the SAP Business Technology Platform
+01:06
+and within that a subaccount.
+01:09
+Enterprise accounts are usually associated
+01:11
+with customer or partner contracts
+01:14
+and the entitlements they have purchased.
+01:17
+But it's also possible to use an enterprise account for personal exploration.
+01:24
+All accounts come with a default entitlement
+01:27
+for SAP Master Data Integration,
+01:29
+so we are set up with that.
+01:33
+Make sure to create a subaccount in the respective region
+01:36
+you want to use SAP Master Data Integration in.
+01:39
+Check out the SAP Help Portal for more information
+01:43
+on enterprise accounts and subaccounts.
+01:51
+Let's have a look at how tenants and clients relate to concepts
+01:55
+of the SAP Business Technology Platform.
+02:00
+Every application or system communicating and integrating
+02:04
+with SAP Master Data Integration is called a client.
+02:08
+On the technical level,
+02:11
+clients correspond to service instances or service bindings in the SAP BTP.
+02:19
+We will learn more about creating a service instance in the next unit.
+02:29
+Every client belongs to a tenant
+02:32
+determined by the subaccount the service instance is created in.
+02:37
+Clients of the same tenant are able to share data,
+02:41
+thus master data replication between those clients of a specific tenant is possible.
+02:49
+In contrast, clients of different tenants are isolated from each other
+02:54
+and cannot share any data.
+02:58
+We can use this property to build up landscapes
+03:01
+according to the needs of the business process or the customer.
+03:07
+We can use these concepts and properties
+03:10
+to shape the landscape based on the requirements given
+03:13
+by a customer or a business process.
+03:17
+To achieve data isolation between distinct groups of clients,
+03:22
+we can simply use different subaccounts.
+03:26
+For instance, a customer who wants to set up
+03:29
+a development landscape next to the productive landscape
+03:33
+can do that by creating a subaccount for each.
+03:38
+In the example we see here,
+03:39
+we have the productive landscape with tenant A on the left
+03:43
+and the development landscape with tenant B on the right.
+03:49
+The clients within each tenant can share data,
+03:54
+whereas the two landscapes are completely isolated from each other.
+04:04
+Note that for each sub-account in the SAP Business Technology Platform,
+04:10
+there can be at most one tenant of SAP Master Data Integration.
+04:17
+Let's have a brief look at consuming and producing clients.
+04:22
+Consuming clients are usually interested in changes to master data records
+04:27
+and they poll for these changes
+04:30
+at SAP Master Data Integration.
+04:33
+The polling interval can be freely chosen by the clients
+04:39
+and is usually determined by the business process.
+04:49
+Consuming clients may poll for changes
+04:52
+of one or many master data types.
+04:55
+For instance, client A here is interested in changes to business partner objects,
+05:01
+whereas client B is interested in both business partner and cost center records.
+05:12
+Note that there must be an active distribution model defined
+05:16
+describing the read permissions for the client
+05:19
+for them to receive any updates.
+05:24
+If a client is not only interested in changes to a master data type
+05:28
+but also notifies SAP Master Data Integration about modifications of the record,
+05:34
+it is called a producing client.
+05:37
+Note that producing clients don't directly change the data in SAP Master Data Integration,
+05:43
+but instead send change requests.
+05:47
+Such change requests describe an action or a modification of a master data record.
+05:53
+For instance, to create a new record, to update a field or to add key mapping information.
+06:02
+The SAP Master Data Integration service
+06:04
+will process these change requests asynchronously
+06:07
+and will notify about the outcome of the operation
+06:11
+in the outgoing change events.
+06:14
+Therefore, each producing client
+06:17
+should also be a consuming client polling for change events
+06:21
+and correlating these change events
+06:24
+with the change requests they have sent.
+06:32
+Note that write permissions govern which clients
+06:35
+are allowed to send change requests in the first place.
+06:39
+We will learn about this configuration
+06:41
+in the upcoming unit four,
+06:44
+where we create a service instance for a client.
+06:52
+When creating a service instance for a client
+06:55
+in the SAP Business Technology Platform,
+06:57
+you will need to choose a service plan.
+07:00
+SAP Master Data Integration offers two service plans.
+07:05
+Choose SAP integration when setting up
+07:08
+an SAP-branded cloud application.
+07:12
+For integrating an S/4HANA on-premise system,
+07:16
+choose the S/4HANA on-premise service plan.
+07:21
+Note that none of the service plans must be used
+07:25
+to connect other applications such as non SAP-branded cloud applications
+07:31
+or third-party applications or systems.
+07:40
+Let's close this unit with a short summary.
+07:44
+We learned that tenants of SAP Master Data Integration
+07:47
+correspond to SAP accounts in the
+07:50
+SAP Business Technology Platform.
+07:53
+Clients of SAP Master Data Integration
+07:56
+correspond to service instances or service bindings
+08:00
+in such a subaccount.
+08:07
+Changes to master data records can be replicated
+08:10
+between clients of a tenant, but are never replicated
+08:15
+between clients of different tenants.
+08:19
+Clients can consume and produce changes to master data records.
+08:25
+All producing clients should also be consuming clients
+08:30
+to learn about the outcome of their change requests.
+08:34
+And this is the end of the unit.
+08:36
+Thanks for joining in and see you in the next unit.
+Discussion topics
+4 topics
+(00:00)
+Service plan to send data to third Party via CLoud integration
+4 replies
+Which service plan needs to be used to send Masterdata to third party via Cloud integration
+
+Read more
+(00:00)
+Service plans in same tenant
+4 replies
+Can the same tenant be connected to both cloud (via sap-integration) and S4/HANA on premise (via s4hana-onpremise) clients?
+
+Read more
+(00:00)
+S/4 OnPremise usage and MDI
+3 replies
+Hi, is the sap-integration plan also covering the usage with S/4 OnPremise? Thx!
+
+Read more
+(00:00)
+How are changes between different Tenants in the MDI propagated ?
+2 replies
+Hi Tobias,
+
+Thank you for the clear and well paced Unit 3 lesson.
+
+You mentioned that if there are changes to the Master Data (MD) records for...
+
+Read more
+The discussions for this course are read-only. No new topics or replies can be created.
+
+‹
+Previous
+
+Unit 2: Self-test
+Next
+
+Unit 3: Self-test
+›
+Hide navigation
+Overview
+Week 1
+Assignment Week 1
+Discussions
+Week 2
+Week 3
+I Like, I Wish
+Final Exam
+More information
+About Us
+Course Reactivation
+Blog
+SAP Learning
+Polls
+Help
+FAQ
+Certificate Guidelines
+Digital Badges
+Code of Honor
+Forum Rules
+Peer Assessment
+Helpdesk
+Follow us
+X, formerly Twitter
+SAP Community Network
+About openSAP
+openSAP is SAP’s free learning platform for everyone interested in learning about SAP’s latest innovations and how to survive in the digital economy. openSAP Enterprise MOOCs are complete courses, and learners can earn a certificate to demonstrate the knowledge they’ve acquired. Complementary learning opportunities exist in the form of openSAP Podcasts and openSAP Microlearning.
+
+Download on the App StoreGet it on Google Play
+© 2013 - 2024 Copyright SAP – Legal DisclosurePrivacyTerms of UseCookie StatementCookie 喜好设置Powered by HPIopenHPI (r8551)
+
