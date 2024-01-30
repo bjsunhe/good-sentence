@@ -1,0 +1,696 @@
+Unit 1: Introduction to SAP Master Data Integration (MDI)
+Duration: approx. 19 minutes
+Hello and welcome to the openSAP course,SAP Master Data Integration in the Intelligent Enterprise,
+
+
+
+00:09 / 18:54
+
+
+
+
+
+00:06
+Hello and welcome to the openSAP course,
+00:09
+SAP Master Data Integration in the Intelligent Enterprise,
+00:13
+week one, unit one,
+00:14
+Introduction to SAP Master Data Integration.
+00:18
+My name is Arne Ludwig
+00:19
+and I am a product owner with SAP Master Data Integration.
+00:25
+Before we go into the details
+00:27
+of the SAP Master Data Integration service,
+00:30
+let me provide a little bit of context around this service.
+00:35
+So the idea is mainly driven
+00:38
+behind the Intelligent Suite
+00:40
+or the Intelligent Enterprise program,
+00:43
+where the program is mostly defined
+00:46
+by the major business processes.
+00:48
+So we do have processes like Lead to Cash,
+00:51
+Source to Pay, Recruit to Retire,
+00:53
+and Design to Operate,
+00:55
+which span across multiple different SAP applications.
+01:00
+So if we take the example of the Recruit to Retire,
+01:03
+for example, we see that there are multiple solutions,
+01:07
+such as SAP S/4HANA, SAP SuccessFactors,
+01:11
+SAP Fieldglass, and SAP Concur being involved.
+01:15
+And to ensure that these processes run flawlessly
+01:18
+across the Intelligent Enterprise,
+01:21
+we need to make sure
+01:23
+that a certain integration or suite quality
+01:26
+is being achieved.
+01:28
+And for that, SAP invests into the so-called suite qualities.
+01:34
+And within this course,
+01:36
+we will mainly focus on the suite quality
+01:39
+of aligned domain models.
+01:41
+So if you're interested
+01:43
+in the overall Intelligent Enterprise idea,
+01:50
+there is also in unit two
+01:52
+a little bit more detail on that.
+01:56
+If you want to read up on further information,
+01:59
+you can also check the SAP Road Maps,
+02:02
+where you'll find new integration scenarios
+02:06
+being available in the future
+02:08
+via the Master Data Integration service.
+02:12
+You can find information
+02:13
+about the strategy of the Intelligent Enterprise
+02:16
+in the integration whitepaper.
+02:19
+And you will also be able to drill down
+02:23
+in the specific business processes,
+02:25
+identify which applications, which services are part,
+02:29
+and do this on the SAP API Business Hub.
+02:37
+So let's look into the SAP Master Data Integration service itself.
+02:41
+How does the service help
+02:43
+to achieve the suite qualities goal?
+02:47
+The main objective is to help business applications
+02:51
+to arrive at a consistent view on master data.
+02:55
+So what does it look like in practice?
+02:57
+Let's have a look at an example here.
+03:00
+So SAP Master Data Integration service
+03:03
+follows a hub-and-spoke model,
+03:05
+meaning that it is a central integration point
+03:08
+that is available for all applications to integrate with,
+03:12
+and hence on this example here,
+03:14
+we can see that on the lower-left side
+03:17
+there's an SAP S/4HANA solution,
+03:20
+creating a cost center,
+03:21
+and sending this cost center object
+03:24
+to MDI, to the Master Data Integration service.
+03:28
+When the SAP Fieldglass and SAP SuccessFactors solutions,
+03:34
+so all of the downstream clients
+03:36
+can basically retrieve the data from the service.
+03:40
+So in this case, they receive a copy of the same version
+03:44
+of the cost center object.
+03:48
+So what are the guiding principles
+03:50
+behind the SAP Master Data Integration service?
+03:53
+So first of all, we want to get away
+03:55
+from the current situation
+03:57
+where customer landscapes are often very complex and hard to maintain
+04:02
+due to various different point-to-point integrations,
+04:05
+depicted on the left-hand side here.
+04:08
+So we want to achieve a more centralized integration point
+04:12
+that you can see on the right-hand side,
+04:14
+where the SAP Master Data Integration service
+04:17
+serves as a hub in the middle.
+04:19
+So that overall will lead to a reduced maintenance effort,
+04:23
+since we only have a standardized way
+04:26
+of integrating with this service,
+04:29
+as well as an improved consistency
+04:32
+just due to the underlying principle
+04:36
+of every downstream client getting a copy
+04:40
+from the more or less same state.
+04:43
+And then furthermore, it will serve
+04:46
+as a first step towards fully managed SAP integrations.
+04:52
+And hence, this is a good step
+04:56
+to reduce the overall effort
+04:59
+in terms of creating integration scenarios.
+05:04
+There's not only standardization happening
+05:07
+in terms of the technical way, the protocol, so to speak,
+05:10
+to integrate with the service,
+05:13
+but there's also a second component to it
+05:15
+and that is the SAP One Domain Model,
+05:18
+and this One Domain Model is used
+05:20
+as the lingua franca for exchanging data,
+05:25
+or, in other words, this is describing the models
+05:30
+which are sent over the wire to the service.
+05:33
+So instead of having a situation
+05:36
+where each application integrates
+05:38
+with another application,
+05:41
+one would have to find multiple mappings
+05:44
+in between the different data models.
+05:47
+Now we do have the situation
+05:48
+that each application only needs
+05:50
+to provide a single mapping
+05:52
+from their local persisted suite
+05:54
+to the SAP One Domain Model,
+05:57
+and then afterwards
+05:59
+can exchange master data via the service.
+06:04
+The SAP One Domain Model is developed within SAP
+06:09
+by getting all of the LOBs
+06:11
+and the SAP solutions together
+06:14
+to verify that the relevant data
+06:16
+is available in those models
+06:18
+and to achieve certain qualities also
+06:22
+across these models.
+06:24
+If you want to learn more about the SAP One Domain Model,
+06:27
+I can recommend you listen in to the second unit as well,
+06:31
+where we will share more information
+06:33
+on the One Domain Model.
+06:38
+A third guiding principle
+06:39
+is that the Master Data Integration service
+06:44
+should actually serve
+06:47
+as a basis for providing out-of-the-box integrations,
+06:52
+meaning that SAP applications will come
+06:55
+with developed and kind of predefined integration
+07:01
+into the service, such that a customer
+07:05
+would only need to be left with the tasks
+07:08
+to identify what kind of master data
+07:10
+goes to what kind of an application,
+07:14
+such that the tedious work can be done by SAP,
+07:18
+whereas you define your businesses accordingly.
+07:24
+So what are some of the features
+07:27
+that the Master Data Integration service provides?
+07:31
+So first of all, a feature which is often being asked for
+07:35
+and which is available on the service centrally already
+07:38
+is the extensibility,
+07:41
+meaning that customers will and should be able to
+07:44
+extend also the One Domain Model models
+07:47
+to their specific needs,
+07:50
+such as an example here
+07:52
+where a workforce person, maybe in an aviation context,
+07:56
+needs to have an additional field
+07:59
+being added to the One Domain Model,
+08:02
+which could be a pilot license,
+08:04
+which defines what kind of aircraft this person
+08:08
+is allowed to fly.
+08:12
+Another functionality that the service provides
+08:16
+is the optimistic locking.
+08:18
+So what's behind this technical term
+08:21
+is basically that the service prevents
+08:26
+dirty writes from happening,
+08:28
+by that ensuring a certain consistency.
+08:32
+So what does it mean?
+08:34
+So assume that two applications want to
+08:38
+update the same master data instance,
+08:40
+for example, a workforce person Arne.
+08:44
+And in that case, if they do this simultaneously,
+08:49
+they will have to also provide for any update requests
+08:54
+something like a version ID
+08:56
+to the Master Data Integration service.
+08:59
+Sending this version ID with the update allows the service
+09:05
+to distinguish between clean and dirty writes,
+09:10
+meaning that if the version ID
+09:12
+that the application updating the workforce person Arne is sending
+09:16
+is equivalent to the version ID the service centrally has,
+09:21
+then this update can be validated,
+09:28
+whereas if the version ID is outdated,
+09:31
+the service is not allowed to update the workforce person.
+09:35
+In this case, the client 1 on the left-hand side
+09:38
+would need to get an update of the workforce person first
+09:42
+before being able to provide an update.
+09:46
+Another key functionality
+09:48
+of the Master Data Integration service
+09:50
+is the topic of filtering.
+09:53
+And that is important since you want to
+09:55
+control which data is replicated to which applications.
+10:00
+And that you can do on many different levels.
+10:02
+So the most prominent distinguishing parts
+10:06
+are the ways of filtering the data
+10:09
+either by instance or by segment filtering.
+10:12
+So with instance filtering,
+10:14
+we are referring to the complete records.
+10:18
+So you can define what kind of master data records
+10:21
+are being sent to which client.
+10:24
+As an example, you could take the workforce persons
+10:28
+for a certain country.
+10:31
+So let's say only a workforce person based out of Germany
+10:34
+should be allowed to be replicated
+10:37
+to a certain client.
+10:41
+Why is that is necessary?
+10:43
+Due to regulatory reasons,
+10:45
+maybe you want to restrict the data
+10:48
+an application is allowed to get.
+10:51
+Same, you can also control
+10:55
+in terms of filtering specific segments of the data,
+11:00
+meaning that you cannot only define which whole records
+11:05
+are being replicated,
+11:06
+but also which parts of the record are being replicated.
+11:09
+So taking the well-known business partner object,
+11:12
+which consists of supplier and customer-related information,
+11:16
+you will be able to define
+11:18
+that only supplier-related information, for example,
+11:22
+is supposed to be replicated to an application.
+11:27
+So it is important to know
+11:29
+that the service learns
+11:32
+or persists the data centrally,
+11:37
+and hence is able to react to filter changes.
+11:42
+So taking the example for the instance filtering
+11:44
+where workforce persons only out of Germany
+11:46
+should be replicated,
+11:49
+a customer could go ahead and modify the filter
+11:52
+by adding workforce persons of the US
+11:57
+to the same replication pattern.
+11:59
+And then the service would be able
+12:01
+to do something like a filter replay,
+12:04
+go over all the workforce persons available in the system,
+12:08
+and then inform the application
+12:10
+about what kind of workforce persons are available.
+12:14
+Similarly, the service also informs
+12:19
+if certain master data records
+12:22
+are not part of the filter anymore,
+12:24
+and that the application
+12:25
+will not receive any updates anymore.
+12:29
+Also important is that a similar activity happens
+12:34
+if a master data record leaves the filter scope.
+12:39
+So if the workforce person Arne changes the country
+12:44
+from Germany to, I don't know, France,
+12:48
+then I would not be part of the filter criteria anymore,
+12:55
+and hence, an application would be notified
+12:58
+that the workforce person Arne is from now on being excluded
+13:02
+from the replication set.
+13:04
+And that overall leads to a way
+13:06
+to keep the data consistent within the customer landscape.
+13:14
+Similar functionality can also be used
+13:17
+to provide data protection and privacy functionalities.
+13:22
+So there is the possibility to define purposes as filters.
+13:28
+We do also have read access logs for sensitive data,
+13:32
+and the data is only kept as long as applications
+13:38
+that own the data also have the data available,
+13:40
+hence if an application deletes the data,
+13:43
+it will also be deleted
+13:46
+on the Master Data Integration service.
+13:51
+So how does it look technically
+13:53
+without going into too many details here?
+13:57
+We can say that we are following a pull model, so to speak.
+14:03
+So obviously on the inbound side,
+14:06
+applications send or propagate changes
+14:09
+to the Master Data Integration service as events.
+14:13
+But also on the outbound side,
+14:15
+the communication is triggered by the application.
+14:19
+The application can choose its own schedule,
+14:24
+which is applicable to the current business needs
+14:29
+of the application or the business process,
+14:32
+and retrieve the changes of the service accordingly.
+14:36
+The communication, as mentioned earlier,
+14:39
+is based on the One Domain Model,
+14:41
+meaning that we, as the Master Data Integration service,
+14:45
+get object or master data records,
+14:51
+which are defined by the One Domain Model,
+14:54
+and we also only replicate those objects
+14:56
+within the One Domain Model.
+14:59
+So this is something
+15:00
+that the service also actually validates,
+15:03
+to make sure that we do have a certain data quality available.
+15:07
+This all happens
+15:09
+on an asynchronous event-based replication mechanism.
+15:14
+So the data is stored, the events are stored
+15:17
+on the service centrally,
+15:20
+but at some point in time,
+15:22
+according to the data privacy regulations
+15:27
+will also be deleted if necessary.
+15:32
+So these events are being persisted,
+15:35
+not only to support the filter mechanisms
+15:38
+we spoke about earlier,
+15:40
+but also to support longer offline periods
+15:43
+or to support scenarios
+15:46
+where initial loads are necessary,
+15:49
+for applications which are, for example,
+15:52
+newly onboarded to the landscape
+15:54
+or if a customer chooses to do a staged rollout
+15:58
+of the Master Data Integration service.
+16:01
+These applications can be onboarded one by one.
+16:04
+They will eventually receive the same data
+16:07
+according to filter settings,
+16:09
+as if they would have been part
+16:10
+of the landscape from the beginning.
+16:14
+All right, so before concluding,
+16:16
+I would actually want to highlight a specific solution,
+16:19
+which is called SAP Master Data Governance.
+16:23
+It has a special relationship to SAP Master Data Integration,
+16:27
+as you can tell from the name.
+16:29
+They both deal with master data
+16:31
+but they both serve different purposes.
+16:35
+As shown in this presentation,
+16:37
+SAP Master Data Integration
+16:39
+provides a replication mechanism, a very generic one,
+16:45
+on all various different master data objects
+16:47
+relevant for the Intelligent Enterprise.
+16:51
+Then the SAP Master Data Governance
+16:54
+is focusing on the very important master data object,
+17:00
+and providing additional value-adding functionalities on top of it
+17:04
+to improve the quality of the data.
+17:07
+So that is namely
+17:08
+the consolidation mass processing features,
+17:11
+as well as central governance
+17:13
+and data quality management things.
+17:16
+So overall, SAP Master Data Governance
+17:21
+can be used on top of SAP Master Data Integration
+17:25
+using the Master Data Integration service
+17:27
+as a replication mechanism
+17:29
+and providing additional means
+17:31
+to approve the overall master data quality
+17:33
+within the customer landscape.
+17:36
+And that brings me to the last slide,
+17:39
+which is an overview, a summary
+17:41
+of what we've seen in this presentation.
+17:44
+So SAP Master Data Integration service
+17:47
+is positioned as a central hub,
+17:51
+as an integration point in the middle,
+17:53
+to which SAP-branded cloud applications,
+17:55
+such as S/4HANA, are integrated out of the box.
+18:00
+We do have the possibility
+18:03
+to add a solution like SAP Master Data Governance on top
+18:06
+to provide additional data quality means
+18:11
+to the customer landscape.
+18:13
+There is also the option
+18:15
+to integrate third-party applications
+18:18
+via SAP Cloud Integration.
+18:19
+So since July 2022,
+18:22
+there is the first version
+18:24
+of a Master Data Integration adapter available
+18:27
+in SAP Cloud Integration.
+18:29
+We're also looking into means of integrating
+18:33
+or connecting with older SAP on-premise solutions.
+18:39
+And with that, we are at the end of the unit.
+18:42
+Thank you very much for listening
+18:44
+and we will see you soon in the next unit.
