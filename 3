@@ -1,0 +1,559 @@
+openSAP logo
+
+Channels
+Courses
+
+Further Learning
+News
+
+English
+
+SAP Master Data Integration in the Intelligent EnterpriseFeaturing experts from the MDI and MDO team
+Self-paced course
+Learnings
+Discussions
+Progress
+Collab Space
+Course Details
+Announcements
+
+Unit 2: More about SAP Master Data Integration and SAP One Domain Model
+Duration: approx. 13 minutes
+
+
+
+00:00 / 12:48
+
+
+
+
+
+00:05
+Hello, and welcome to the openSAP course,
+00:08
+SAP Master Data Integration in the Intelligent Enterprise.
+00:13
+Week one, unit two, More about SAP Master Data Integration
+00:18
+and the SAP One Domain Model.
+00:20
+My name is Arne Ludwig,
+00:22
+and I am a product owner with SAP Master Data Integration.
+00:27
+In this unit, we will cover three topics,
+00:30
+and we will start off with the Intelligent Enterprise
+00:33
+and how the SAP Business Technology Platform
+00:37
+can support customers
+00:38
+in their digital transformation journey.
+00:40
+We will then look into the SAP One Domain Model,
+00:44
+look what it is all about and how it actually helps.
+00:48
+And we will finally look into what is currently available
+00:52
+in terms of documentation of SAP Master Data Integration.
+00:57
+All right.
+00:58
+So we at SAP, we do have the goal to enable every enterprise
+01:02
+to become an intelligent and sustainable enterprise.
+01:06
+And that is important since data shows that large companies
+01:10
+on average have even more than 100 different applications
+01:13
+in their landscapes,
+01:15
+and hence rendering those IT landscapes
+01:17
+into a hybrid, very complex landscapes,
+01:20
+which are hard to maintain.
+01:22
+And given that business processes are spanning
+01:27
+across multiple different applications nowadays,
+01:30
+it is key that the digital transformation,
+01:33
+which also adapts
+01:34
+with the ever-changing end-to-end processes, is started.
+01:39
+So if we look at this slide on the right-hand side,
+01:41
+we can see that the intelligent, sustainable enterprise
+01:44
+is shown on top
+01:46
+of these industry-specific end-to-end processes,
+01:49
+such as lead to cash, design to operate,
+01:53
+source to pay, or recruit to retire.
+01:56
+And to ensure that all of these processes
+02:00
+can be run flawlessly.
+02:02
+SAP invests into suite qualities.
+02:06
+And here we namely invest into a seamless user experience,
+02:11
+consistent security and identity management,
+02:14
+embedded and cross-product analytics,
+02:17
+the aligned domain models, which are the key
+02:20
+or core content of this course,
+02:23
+the one workflow inbox,
+02:25
+the coordinated lifecycle management,
+02:27
+as well as end-to-end process blueprints.
+02:30
+And to make sure that all of these suite qualities are fulfilled,
+02:35
+we build those on the SAP Business Technology Platform,
+02:39
+which provides a holistic value proposition.
+02:43
+So the SAP Business Technology Platform
+02:46
+offers integrated processes by connecting data and processes
+02:51
+across different applications, not only within SAP,
+02:55
+but also across third-party applications.
+02:58
+It provides a means, in terms of data and analytics,
+03:01
+to provide actionable insights,
+03:06
+as well as offering tools
+03:08
+for fast and efficient application development.
+03:12
+And now, in the upcoming slides, we will further look
+03:16
+into the aligned domain models part,
+03:19
+which is based on the SAP One Domain Model.
+03:24
+So we do have the basic question,
+03:26
+why do we actually need this One Domain Model?
+03:28
+Well, in the last couple of years,
+03:32
+SAP has made a lot of acquisitions.
+03:34
+So we have now a broad portfolio of different applications.
+03:39
+Also, naturally, the scope and the data itself
+03:45
+in the applications evolve,
+03:47
+and hence we have a heterogeneous landscape
+03:50
+in terms of data models.
+03:53
+And one step to get into harmonization and standardization
+03:59
+is to create a common data model with common semantics
+04:04
+that can be used to exchange and replicate data,
+04:07
+but also to analyze data between applications
+04:11
+in the Intelligent Enterprise and its ecosystem.
+04:15
+Based on this One Domain Model, we will be able to provide
+04:18
+out-of-the-box integrations between SAP applications.
+04:23
+We will be able to offer easy ways of extending the data
+04:27
+and providing consistent APIs
+04:29
+based on the One Domain Model.
+04:32
+Overall, this further leads to lower integration effort,
+04:36
+and also, hence, reduces the TCO.
+04:43
+So, what would be the easiest way
+04:46
+to create such a domain model?
+04:48
+Well, obviously, one could simply go ahead
+04:51
+and define a model on paper,
+04:54
+and then take the best which seems to be out there,
+04:59
+but we will also need to take into consideration
+05:02
+what is currently available, right?
+05:04
+So, within SAP, all of these applications
+05:08
+share a certain set of data,
+05:12
+but they all look at the same data in a different context.
+05:17
+So in the workforce context, for example,
+05:20
+SAP SuccessFactors looks at employee data,
+05:25
+SAP Fieldglass looks at contingent workers,
+05:30
+multiple solutions look into finance-related objects,
+05:34
+such as controlling objects or cost centers.
+05:37
+And they all share a certain amount of this data.
+05:40
+On top, there's even more common data, such as language codes
+05:45
+or currency codes and country codes that are shared.
+05:50
+And in order to make sure that these applications avoid
+05:55
+having multiple individual point-to-point mappings,
+06:00
+where each combination, so to speak, needs its own mapping,
+06:05
+the idea of the One Domain Model
+06:07
+as the central language provides an easy means
+06:11
+to define a language for replication purposes.
+06:16
+So that's why the SAP One Domain Model
+06:19
+is used as a common model for business objects
+06:22
+across different SAP applications,
+06:24
+enabling those systems to speak the same language
+06:28
+during data exchange.
+06:30
+So here it's key that it is during data exchange,
+06:34
+meaning that everything which goes over the wire
+06:36
+is basically according to the SAP One Domain Model,
+06:40
+while the applications themselves
+06:42
+keep their local representation of the model,
+06:45
+and hence this leaves us with one mapping per application,
+06:49
+based on the One Domain Model.
+06:51
+So hence it enables the delivery
+06:53
+of deep out-of-the-box integration,
+06:56
+for easy extension and consistent APIs
+06:59
+across business processes
+07:00
+for the SAP Intelligent Enterprise.
+07:04
+So the definition of these models is basically done
+07:09
+in the Core Data Services definition language,
+07:12
+so the CDS format,
+07:14
+so just to ensure that we do have a machine-readable format,
+07:18
+which, for instance, is used by a service
+07:20
+such as SAP Master Data Integration service
+07:26
+to enable the replication.
+07:30
+So let's make it a little bit more tangible
+07:32
+and look at a concrete example.
+07:35
+So here on the left-hand side
+07:37
+you can see a cost center entity.
+07:39
+And on the right-hand side you can see
+07:41
+that all of the different SAP solutions
+07:44
+do have their local representation of the cost center.
+07:48
+Hence in SAP S/4HANA, SAP SuccessFactors,
+07:52
+SAP Concur, and SAP Fieldglass,
+07:54
+they all have their own representation
+07:57
+of the cost center available.
+07:59
+It looks different in all places in a technical way,
+08:03
+even though they speak about the same cost center data.
+08:07
+And hence within the SAP One Domain Model,
+08:11
+internally within SAP we provide aligned entities,
+08:14
+such as the cost center, the ODM cost center,
+08:18
+which is then understood, and a mapping is identified
+08:22
+between the different applications at the ODM model.
+08:30
+So, if you are curious and want to learn more
+08:32
+about the ODM models at the current state,
+08:36
+please feel free to visit the SAP API Business Hub,
+08:40
+and there we do have the SAP One Domain Model Explorer
+08:44
+available for you.
+08:45
+You can drill down into various different details
+08:48
+and attributes, and play around,
+08:51
+figure out what's actually in there for the domain models.
+08:57
+So how does it come together then in the end?
+09:00
+So this SAP One Domain Model is being defined
+09:03
+by all of the SAP applications
+09:06
+and then being used by the SAP Master Data Integration
+09:10
+as the lingua franca, so to speak, for replication purposes.
+09:15
+So each application then integrates
+09:17
+based on the SAP One Domain Model
+09:19
+with the SAP Master Data Integration service.
+09:23
+And on top, we do have the SAP Master Data Orchestration component
+09:28
+that allows a customer landscape administrator
+09:32
+to define exactly what kind of master data needs to go
+09:35
+to which kind of application.
+09:41
+All right, so how do you eventually set
+09:44
+such a SAP Master Data Integration replication app?
+09:48
+So that you will learn within this openSAP course,
+09:55
+but there's also documentation available online.
+09:59
+So we do have the classic
+10:00
+SAP Master Data Integration help page,
+10:04
+and from which I would like to highlight a few sections.
+10:09
+So within the initial setup part, you will learn
+10:12
+how SAP Master Data Integration treats data buckets,
+10:17
+so isolated data buckets, so to speak,
+10:20
+and how applications can connect to such data buckets.
+10:25
+You will learn how to configure SAP Master Data Integration,
+10:28
+which allows you to specify
+10:30
+that exactly the needed data is going from one application,
+10:34
+or from the service tool, the dedicated applications.
+10:40
+Another topic I'd like to shed light on
+10:43
+is the integration part,
+10:45
+and there you will be forwarded
+10:46
+to specific application pages
+10:49
+where you can find additional information on integrations
+10:53
+with the SAP Master Data Integration service.
+10:57
+Then there is the security-related bucket, just to make sure
+11:01
+that the integration and the setup is correctly used.
+11:06
+And if you have any issues, please feel free
+11:10
+to look into our troubleshooting and FAQ section.
+11:13
+There is a guided answer part, which is ever-growing,
+11:17
+and you will be hopefully able to find your answers there.
+11:22
+Finally, pricing and regional information,
+11:24
+the information is available
+11:27
+in the SAP Discovery Center.
+11:30
+And with that, I'd like to reiterate
+11:33
+the key learnings of this unit.
+11:36
+So in the beginning,
+11:36
+we looked at the SAP Business Technology Platform
+11:40
+and how it supports the business transformation journey.
+11:45
+Then we looked into the SAP One Domain Model,
+11:48
+how this provides a common model
+11:50
+for exchanging data within the Intelligent Enterprise.
+11:54
+And finally, we just looked
+11:55
+at the SAP Master Data Integration documentation
+11:59
+and where to find further information on that.
+12:03
+As a final slide, I'd like to highlight
+12:07
+SAP's integration plan in the cloud,
+12:10
+which is in a white paper, which describes
+12:13
+how the digital transformation journey can be done.
+12:17
+I just want to highlight once again
+12:19
+the SAP One Domain Model Explorer,
+12:22
+to freely browse the SAP One Domain Model
+12:27
+and look into the details,
+12:29
+as well as the SAP Master Data Integration help page.
+12:33
+And with that, we are at the end of the unit.
+12:36
+I want to thank you very much for listening,
+12:38
+and we'll see you again in the next unit.
+Discussion topics
+6 topics
+(00:00)
+Connecting "One Domain Model" with "Master Data Integration" with example(s)
+1 reply
+Hi Arne,
+
+Thanks much for this informative and well paced Unit 2 lesson.
+
+In the video between approx. 7:30-8:30 minutes, you describe the "One...
+
+Read more
+(00:00)
+HCM embedded/for S4HANA is still the leading data for the workforce (one domain model)
+1 reply
+In slide number 5 - SAP One Domain model - context, for the workforce/employee data, there is SAP HCM embedded in S4HANA and SAP HCM for S4HANA....
+
+Read more
+(00:00)
+SAP Travel Expense is still shared data with S4HANA
+1 reply
+Again, related to slide number 5 - SAP One domain model, S4HANA is still part of travel expense, so it is still a contributor to one domain model...
+
+Read more
+(00:00)
+Data model extension
+1 reply
+Hello, As you know sometimes we need to extend standard data model with necessary custom attributes (business requirements). Is it possible to...
+
+Read more
+(00:00)
+How does MDG/ MDI integrate into SAP BW / BI?
+1 reply
+How does MDG/ MDI integrate into SAP BW / BI? This is the probably most crucial part from the past, where so much bullshit from many systems came...
+
+Read more
+(00:00)
+MDI pricing and TDD for S4 on-premise
+2 replies
+Hello,
+
+If I'm not mistaken, the usage of MDI is free in a SAP cloud application context.
+
+But what in case of S/4HANA on-premise? In case this...
+
+Read more
+
+The discussions for this course are read-only. No new topics or replies can be created.
+
+‹
+Previous
+
+Unit 1: Self-test
+Next
+
+Unit 2: Self-test
+›
+Hide navigation
+Overview
+Week 1
+Assignment Week 1
+Discussions
+Week 2
+Week 3
+I Like, I Wish
+Final Exam
+More information
+About Us
+Course Reactivation
+Blog
+SAP Learning
+Polls
+Help
+FAQ
+Certificate Guidelines
+Digital Badges
+Code of Honor
+Forum Rules
+Peer Assessment
+Helpdesk
+Follow us
+X, formerly Twitter
+SAP Community Network
+About openSAP
+openSAP is SAP’s free learning platform for everyone interested in learning about SAP’s latest innovations and how to survive in the digital economy. openSAP Enterprise MOOCs are complete courses, and learners can earn a certificate to demonstrate the knowledge they’ve acquired. Complementary learning opportunities exist in the form of openSAP Podcasts and openSAP Microlearning.
+
+Download on the App StoreGet it on Google Play
+© 2013 - 2024 Copyright SAP – Legal DisclosurePrivacyTerms of UseCookie StatementCookie 喜好设置Powered by HPIopenHPI (r8551)
+
