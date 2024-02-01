@@ -1,0 +1,601 @@
+openSAP logo
+
+Channels
+Courses
+
+Further Learning
+News
+
+English
+
+SAP Master Data Integration in the Intelligent EnterpriseFeaturing experts from the MDI and MDO team
+Self-paced course
+Learnings
+Discussions
+Progress
+Collab Space
+Course Details
+Announcements
+
+Unit 5: Introduction to SAP Master Data Orchestration
+Duration: approx. 20 minutes
+Hello, and welcome to the openSAP course,SAP Master Data Integration in the Intelligent Enterprise,
+
+
+
+00:08 / 19:23
+
+
+
+
+
+00:05
+Hello, and welcome to the openSAP course,
+00:08
+SAP Master Data Integration in the Intelligent Enterprise,
+00:12
+week one, unit five,
+00:14
+Introduction to SAP Master Data Orchestration.
+00:18
+My name is Hans-Ulrich von Helmolt,
+00:21
+and I'm responsible for the development of SAP Master Data Orchestration.
+00:27
+Now, let's start with a business background
+00:30
+and the reason why an orchestration of master data is necessary
+00:34
+and so important in every extended landscape.
+00:39
+The list I have compiled here is, of course, not complete,
+00:43
+but it should contain the most important things.
+00:47
+Master data exists for multiple entities.
+00:51
+Mostly it is used to enrich business process data.
+00:56
+Master data normally will be distributed across the landscape
+01:01
+and is used there in multiple processes.
+01:05
+Master data may not need to be completely present everywhere.
+01:11
+Master data may as well have organization-dependent segments
+01:15
+belonging to different systems in the landscape.
+01:19
+Master data need to be consistent across a landscape in shared parts
+01:26
+to avoid process breaks.
+01:28
+That means all the needed data in business processes
+01:34
+have to be present when the business processes run.
+01:39
+Master data, and that is very important,
+01:42
+may be maintained in different places and in parallel,
+01:47
+or even close to simultaneously.
+01:50
+That creates high impact on the consistency of the data.
+01:57
+From this list it can be clearly derived that master data
+02:01
+are the backbone of business processes
+02:04
+in distributed and heterogeneous landscapes.
+02:13
+Orchestration of master data flows is therefore crucial
+02:17
+to ensure accuracy, consistency, and visibility of master data
+02:23
+across the complete cloud environment.
+02:26
+I've put cloud here in brackets because this can as well be valid for on premise.
+02:34
+SAP Master Data Orchestration has been created
+02:37
+to provide control of and information about the data distribution in the cloud
+02:43
+between registered applications.
+02:48
+It follows the solution approach listed here.
+02:52
+SAP Master Data Orchestration serves first
+02:56
+as a configuration UI for SAP Master Data Integration.
+03:01
+The distribution model is centrally maintained
+03:05
+and locally deployed in order to be available at runtime.
+03:10
+The data flow between provider and consumer applications
+03:14
+can be set up here, maintained, and monitored.
+03:19
+Key mapping information will be used to provide an overview of which master data is where.
+03:28
+With a view to the complexity of large customer landscapes,
+03:33
+it is clear that manual activity needs to be avoided wherever possible.
+03:39
+That means that scalability requires automation during setup and operation.
+03:47
+As an example, you may take the existence of automated notifications
+03:52
+about the state of the system
+03:54
+instead of permanent surveyance to check a monitor.
+04:01
+The next slide now gives you an overview
+04:04
+about the essential components and features
+04:07
+of Master Data Orchestration.
+04:11
+Of course, you will find some of the requirements
+04:15
+I just mentioned again.
+04:17
+But now, here on this slide, they mean features.
+04:23
+SAP Master Data Orchestration provides
+04:27
+the configuration UI for SAP Master Data Integration.
+04:31
+I will show one example later.
+04:35
+A central definition of distribution
+04:38
+and data ownership models,
+04:41
+model replication to Master Data Integration,
+04:46
+as well as the client libraries,
+04:48
+which exists for ABAP and Java environments,
+04:52
+although this I will explain in some detail.
+04:59
+Now, let me shortly go here to this diagram and explain it, at the right-hand side.
+05:06
+In the previous lessons you have been made familiar
+05:10
+with Master Data Integration,
+05:12
+which you can see here at the bottom,
+05:16
+represented schematically by inbound
+05:19
+Master Data event clock and outbound.
+05:25
+The diagram visualizes the flow of master data,
+05:30
+beginning with a change request on the inbound side here,
+05:36
+and then the consumption as change event on the outbound side,
+05:41
+following the intermediate storage in the MDI event log.
+05:47
+The term system here
+05:50
+stands for any instance like a system, a tenant,
+05:54
+or an application within the cloud, or even on-premise,
+05:59
+and means here, depending on the use case,
+06:02
+sending or receiving client as annotated here.
+06:08
+It is, of course, clear that not every system
+06:11
+necessarily sends and receives data in any case.
+06:18
+Now, let's come to MDO, Master Data Orchestration.
+06:22
+The role, its role here is to define the data flow.
+06:25
+That means to control which system receives which data
+06:32
+and sometimes, I come to that in a minute, also which system sends the data then to MDI.
+06:41
+At run time, this is indicated by the gray arrows,
+06:45
+the participants sent their messages
+06:51
+and log records to CALM/CRUN,
+06:54
+which may be used as a central instance for monitoring.
+07:00
+MDO, this is shown here, has an interface into CALM/CRUN
+07:07
+and can retrieve this information to display it
+07:11
+and provide end-to-end monitoring by this.
+07:15
+This feature will be delivered soon.
+07:20
+Before I show you now the Master Data Orchestration service,
+07:26
+let us for a moment stay with architecture.
+07:29
+As I mentioned on the previous slide,
+07:32
+the models defined in Master Data Orchestration
+07:35
+are replicated to Master Data Integration,
+07:39
+as well as to the client libraries.
+07:42
+There is mainly two of these which are quite different,
+07:46
+the ABAP and the Java library.
+07:51
+The ABAP client/library,
+07:53
+also known as ABAP protocol adapter
+07:58
+gives a so-called high-level abstraction
+08:01
+of the Master Data Integration APIs in SAP systems.
+08:08
+Even though Integration is a single service,
+08:11
+integration needs to be developed
+08:14
+for each master data object.
+08:17
+The ABAP client, however, manages the generic parts.
+08:23
+It controls pulling and pushing data from SAP Master Data Integration,
+08:29
+including remote configuration from SAP Master Data Orchestration.
+08:36
+Also, it supports the monitoring
+08:40
+that is the mentioned CALM CRUN integration
+08:43
+via the SAP application integration framework.
+08:49
+The Java library, however,
+08:52
+because it has no essential persistency
+08:56
+does not provide control functionality,
+08:59
+it is only wrapping the REST APIs.
+09:03
+Development is in progress
+09:06
+to also provide end points
+09:08
+for the SAP Master Data Orchestration configuration.
+09:13
+This will be provided following the approach
+09:19
+that configuration should happen centrally
+09:22
+in SAP Master Data Orchestration
+09:25
+and not in each of the consuming application.
+09:29
+The reason for this is quite trivial, of course.
+09:33
+Different UIs tend to confuse the user,
+09:37
+it's a pure usability question.
+09:41
+Application-specific APIs are needed to transfer control data
+09:46
+into local distribution software.
+09:52
+The next slide gives you an introduction,
+09:55
+a quick view on the Fiori UI.
+09:58
+I'll not comment further on this
+10:00
+because everything I will show here
+10:03
+in the upcoming demo of this and the next unit.
+10:11
+You might understand that this is, of course,
+10:14
+an advertisement to stay with us in the course.
+10:18
+And now, let's come to the demo,
+10:22
+I will here now go into the system.
+10:30
+So, now I can show you the system in some detail here
+10:35
+to give you a first impression on what SAP Master Data Orchestration looks like.
+10:43
+On the Fiori launchpad, which is presented here,
+10:46
+you can see two applications.
+10:50
+I've hidden all the other applications
+10:54
+that are existing but are not needed for the sake of this course and the next course.
+11:01
+So, you see here only Manage Business Object Type.
+11:06
+I think you already learned a little bit about the background of the data definition
+11:15
+in Master Data Integration, this is the object data model.
+11:19
+And the business object types then really tell you
+11:24
+what are the business objects that you can use for distribution.
+11:31
+Here, when I go to some detail you see you can configure.
+11:40
+First of all, by selecting the object,
+11:45
+you select also the API version
+11:49
+in which this object can be distributed.
+11:53
+This is relevant for the supported data structures.
+11:58
+In addition, you can here, I show this very quickly,
+12:05
+switch on the interface to data protection and privacy for this object,
+12:13
+that is, you can activate the business context.
+12:17
+I mention this here because, due to some technical problems,
+12:21
+in these two units we cannot display this, or we cannot demo this,
+12:26
+and so you only need to know the location
+12:29
+where you can activate it.
+12:31
+I will come to this in the next unit
+12:34
+when I go into deeper detail of the maintenance.
+12:39
+One thing which will also come within then one of the next sessions is extensibility,
+12:47
+which you can activate here,
+12:51
+and this will be shown in a corresponding part there.
+12:56
+For now I'm leaving this application here,
+13:00
+just wanted to have this shown to you,
+13:03
+and go to the essential one,
+13:04
+where we manage distribution models.
+13:08
+As this is a brand new client, tenant,
+13:15
+there are no models, of course,
+13:18
+but I want to show you the UI and the screen.
+13:24
+And therefore I press here Create,
+13:27
+and with the view to it you will see
+13:30
+that this is very similar to the screenshot.
+13:35
+And when I make it full screen
+13:38
+then you will see that completely and entirely
+13:43
+corresponds to the screenshot I have shown on the slide.
+13:48
+To the details of it, I will come in the next unit.
+13:52
+What I want to make you aware of is the help function here,
+13:55
+because this offers a pretty nice feature as an online help.
+14:01
+When you go here to one element on the right-hand side
+14:07
+it will show you where it is on the screen,
+14:09
+you can as well go over this,
+14:12
+and then you will get a definition here, a help note.
+14:19
+But you can even do more,
+14:21
+you can go to What's this app?
+14:25
+And this will then lead you directly into the SAP Help Portal
+14:32
+where you find the full set of documentation,
+14:38
+probably you have had access to this before.
+14:42
+For a moment to return to my demo,
+14:45
+I have now to leave here the fullscreen mode
+14:48
+and go back into my demonstration.
+14:53
+And then I can, when I want to, I can make this sidebar small
+15:02
+but still keep the demos here.
+15:05
+But mostly when you are accustomed to it you then will switch it off.
+15:10
+Let's now return to the slides.
+15:16
+On this slide I give you a short outlook
+15:20
+of things that are, so to say, in the pipeline of SAP Master Data Orchestration.
+15:28
+We will deliver what I already mentioned,
+15:30
+end-to-end monitoring capabilities via the use of CALM/CRUN
+15:36
+to collect lock messages from a participating application.
+15:42
+These will be periodically extracted
+15:44
+to SAP Master Data Orchestration and displayed there.
+15:49
+And we will use the knowledge of the distribution models,
+15:54
+which is a value add, to create a process view on that.
+16:00
+What I did not touch here, but I mentioned it with the terms of data consistency,
+16:08
+is the feature of data ownership,
+16:11
+which offers consistency and integrity of master data in distributed landscapes
+16:18
+that often can have parallel changes, as I mentioned.
+16:24
+It offers views on the master data model
+16:27
+to define which application owns what part of the data.
+16:32
+This clearly refers to the fact
+16:36
+that different systems or instances
+16:38
+can be responsible for different parts of the data.
+16:43
+I remind you of the plant data of a product, for instance,
+16:48
+which can be treated in different instances for production.
+16:54
+It will provide communication rules
+16:57
+to control the validation and the redistribution of data
+17:02
+following maintenance operations.
+17:05
+That means create, change, or delete.
+17:09
+And that is one of the reasons
+17:11
+why Master Data Orchestration was named orchestration,
+17:16
+it orchestrates the message flow.
+17:21
+In addition, it will offer monitoring and conflict resolution, possibilities, and options,
+17:31
+because a pure monitor or detecting of an error is not enough,
+17:36
+you need to have options directly to go into the system
+17:42
+and fix the problems.
+17:44
+Then you have to redistribute because the data consistency
+17:49
+is so important for the business processes,
+17:52
+without that they cannot run.
+17:57
+At the end of this unit,
+18:01
+you have learned how to identify
+18:04
+SAP Master Data Orchestration as the operational cockpit
+18:08
+based on SAP Master Data Integration.
+18:12
+You should now be able to understand the basic architecture
+18:16
+of SAP Master Data Orchestration
+18:20
+on top of SAP Master Data Integration.
+18:24
+You basically saw the essential apps
+18:28
+and know how to handle them.
+18:35
+On this slide, I show you two links
+18:39
+to the documentation of Master Data Integration,
+18:44
+and to the documentation of SAP Master Data Orchestration.
+18:50
+I already forwarded you to that within my demo.
+18:56
+And with this, we are really at the end of the unit,
+19:02
+and hopefully you will join us in the next unit again,
+19:06
+where I will provide more detailed information
+19:09
+on how to handle Master Data Orchestration.
+19:13
+For now, I thank you very much for your kind attention.
+Discussion topics
+3 topics
+(00:00)
+Is the Java Client library provided as a download?
+2 replies
+Hello SAP Team,
+
+is or will the Java Client library provided as a download? Or is it just used internally in SAP Cloud Integration?
+
+Best Regards, ...
+
+Read more
+(00:00)
+Video not loading
+4 replies
+The video is not loading for some reason today. I've tried on different browsers i.e. Firefox and Edge.
+
+Read more
+(00:00)
+ABAP ??
+6 replies
+What does ABAP stand for?
+
+Read more
+The discussions for this course are read-only. No new topics or replies can be created.
+
+‹
+Previous
+
+Unit 4: Self-test
+Next
+
+Unit 5: Self-test
+›
+Hide navigation
+Overview
+Week 1
+Assignment Week 1
+Discussions
+Week 2
+Week 3
+I Like, I Wish
+Final Exam
+More information
+About Us
+Course Reactivation
+Blog
+SAP Learning
+Polls
+Help
+FAQ
+Certificate Guidelines
+Digital Badges
+Code of Honor
+Forum Rules
+Peer Assessment
+Helpdesk
+Follow us
+X, formerly Twitter
+SAP Community Network
+About openSAP
+openSAP is SAP’s free learning platform for everyone interested in learning about SAP’s latest innovations and how to survive in the digital economy. openSAP Enterprise MOOCs are complete courses, and learners can earn a certificate to demonstrate the knowledge they’ve acquired. Complementary learning opportunities exist in the form of openSAP Podcasts and openSAP Microlearning.
+
+Download on the App StoreGet it on Google Play
+© 2013 - 2024 Copyright SAP – Legal DisclosurePrivacyTerms of UseCookie StatementCookie 喜好设置Powered by HPIopenHPI (r8552)
+
