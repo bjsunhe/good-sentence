@@ -1,0 +1,479 @@
+openSAP logo
+
+Channels
+Courses
+
+Further Learning
+News
+
+English
+
+SAP Master Data Integration in the Intelligent EnterpriseFeaturing experts from the MDI and MDO team
+Self-paced course
+Learnings
+Discussions
+Progress
+Collab Space
+Course Details
+Announcements
+
+Unit 7: How to test the basic configuration of SAP Master Data Integration
+Duration: approx. 13 minutes
+
+
+
+00:00 / 12:56
+
+
+
+
+
+00:05
+Welcome to the openSAP course
+00:07
+on SAP Master Data Integration in the Intelligent Enterprise.
+00:12
+This is week one, unit seven,
+00:15
+how to test the basic configuration of SAP Master Data Integration.
+00:20
+My name is Tobias Nett,
+00:21
+and I will guide you through this unit as a content expert.
+00:26
+Let's get started.
+00:29
+We will start with a brief recap of week one
+00:33
+to refresh your memory on what you have learned so far.
+00:37
+Next, we will look at the prerequisites
+00:40
+for following this unit in more detail.
+00:44
+In particular, we will cover what you need
+00:47
+in order to test the setup of SAP Master Data Integration.
+00:52
+Finally, we will mimic a producing client
+00:56
+to interact with SAP Master Data Integration
+00:59
+to test the configuration.
+01:07
+Since you've reached unit seven of the first week,
+01:10
+you should be familiar with the basic concepts
+01:14
+around SAP Master Data Integration.
+01:17
+We have covered what SAP Master Data Integration is,
+01:22
+a central hub to replicate master data records.
+01:26
+We covered how to create tenants and connect clients
+01:31
+via BTP subaccounts and service instances.
+01:35
+And you have learned what SAP Master Data Orchestration is
+01:40
+and how to create and manage distribution models with it.
+01:46
+With these fundamentals, we are nearly ready
+01:49
+to test the basic configuration hands on.
+01:54
+But before we get started, we need to make sure
+01:57
+that we have the following things ready.
+02:00
+First, a subaccount in the SAP BTP
+02:04
+representing a tenant of SAP Master Data Integration.
+02:09
+And second, a service instance in that tenant
+02:12
+representing a client of SAP Master Data Integration.
+02:17
+You should also have created a service key for the service instance
+02:21
+and retrieved an application access token for the client
+02:25
+to be used for authentication with SAP Master Data Integration.
+02:31
+Last but not least,
+02:32
+there should be a basic distribution model defined
+02:35
+for the respective client and master data type
+02:39
+that we are going to use for testing the configuration.
+02:48
+Since we are going to send requests to SAP Master Data Integration,
+02:54
+I have to inform you about these API terms of use.
+03:00
+Our case of testing the configuration
+03:03
+as an administrator is covered by the point two,
+03:08
+using the services APIs for testing and error resolution scenarios.
+03:13
+Please note the restrictions for other use cases.
+03:24
+Let's get to the hands-on part of this unit.
+03:27
+We will use the cost center master data type for this.
+03:33
+You can, of course, follow the steps
+03:36
+for a different master data type,
+03:38
+as long as you have a valid sample instance you can use.
+03:44
+Make sure that there is an active distribution model
+03:47
+configured for your client and the respective master data type.
+03:55
+With the application access token,
+03:58
+we can poll the events API of SAP Master Data Integration
+04:03
+via a simple GET request.
+04:07
+If you follow along, the response should be a 200 OK.
+04:12
+In a fresh setup, the value field of change events will likely be empty.
+04:19
+If you're onboarding a new client
+04:21
+in an existing landscape,
+04:23
+you may already see change events here.
+04:26
+In that case, it might already be enough
+04:28
+to ensure that the setup for a consuming client is correct.
+04:35
+Take note of the next link, or deltalink, in the response.
+04:39
+We will use that in further requests to the events API.
+04:46
+If there are no change events in the response yet,
+04:50
+or you want to test that the configuration
+04:53
+is working for a producing client,
+04:56
+we should go ahead by creating a cost center record now.
+05:00
+To do so, we will send a POST request
+05:02
+to SAP Master Data Integration
+05:05
+with the change operation create,
+05:08
+and a dummy instance payload for this test.
+05:14
+The change token should be a unique value identifying the request,
+05:18
+similar to a correlation ID.
+05:21
+Use a random UUID for the instance ID
+05:24
+in case you're following the steps
+05:26
+with multiple clients of the same tenant
+05:30
+or in an existing landscape.
+05:34
+Send the request, and if all goes well
+05:36
+you should see a 202 Accepted response.
+05:44
+When we now poll for changes again,
+05:47
+using the next link that we retrieved earlier,
+05:50
+we should receive at least a change event
+05:53
+corresponding to the change request we just sent.
+05:58
+There might be more events in the response
+06:00
+in case there are other clients producing changes
+06:04
+to master data records in parallel.
+06:08
+If your response looks similar to the one you can see here,
+06:12
+your configuration for producing client is all set up.
+06:21
+Let me quickly demo these steps in practice.
+06:25
+Here in the SAP BTP cockpit again,
+06:28
+which we used in the previous units
+06:31
+to set up a service instance
+06:33
+and to configure distribution models.
+06:37
+I will be using the service instance
+06:39
+with the code name wonky-wombat,
+06:41
+which I created in unit four.
+06:44
+I already have a service key for it,
+06:47
+and I will take the client credentials,
+06:50
+client ID and client secret,
+06:53
+to retrieve an application access token.
+06:57
+Subsequently, we will use the URI down here
+07:01
+to talk to SAP Master Data Integration.
+07:07
+Furthermore, I have set up a basic pull model
+07:11
+for the cost center master data type
+07:14
+for the wonky-wombat system as a consumer.
+07:24
+I already copied over clientid, clientsecret, and the two URLs here.
+07:30
+I will run the request from unit four again
+07:33
+to retrieve the access_token.
+07:40
+I will copy the access_token
+07:42
+to a local variable here
+07:45
+in the HTTP session script.
+07:50
+And it will be used as Bearer token for authorization
+07:55
+when calling SAP Master Data Integration.
+08:01
+The first request we want to send
+08:03
+is a simple GET request to the events API
+08:08
+of SAP Master Data Integration.
+08:11
+In this demo, I'm using the cost center in ODM version 3.0.0.
+08:17
+But you can use any master data type
+08:20
+that you want to test it with.
+08:26
+When sending the request,
+08:28
+I get a positive feedback in form of a 200 OK.
+08:33
+We see that the value of change events is empty.
+08:38
+And we retrieve a deltalink,
+08:40
+which we will store for later
+08:43
+to continue pulling for new change events.
+08:46
+I will store it in a local variable called next.
+08:54
+Now to further test the configuration for a producing client,
+08:59
+we will send a change request to the requests API
+09:04
+by posting a change request JSON payload to that endpoint.
+09:11
+The content type is application/json.
+09:15
+We also need authorization with the access_token.
+09:19
+And we are sending a create operation.
+09:22
+The change token is a uniquely chosen UUID here
+09:28
+to identify the request.
+09:31
+I will try to create the following cost center record,
+09:36
+and I gave it a name Yawning Yorkie cost center.
+09:41
+Let's send the request.
+09:45
+We can see that the request itself
+09:47
+was accepted to SAP Master Data Integration.
+09:51
+So now we have to poll the Events API again
+09:57
+to be sure that the change was accepted
+10:01
+and that we can see the change event produced by the request.
+10:08
+So I'll be sending a GET request
+10:11
+using the deltalink we stored from the first request.
+10:22
+And here we can see again a positive response.
+10:25
+And we can see that there is a single change event
+10:30
+in here with an instance created
+10:35
+with the payload that we send it,
+10:37
+and we see the changeToken we used for the request.
+10:42
+And we see that we got a versionId here.
+10:45
+So we were able to send change requests.
+10:50
+So we got the right permissions for the producing client.
+10:54
+And we are also able to see change events for the client.
+10:59
+We can now clean up the landscape again
+11:01
+by deleting this dummy instance.
+11:05
+For that, we are sending a delete change operation.
+11:09
+We're using a random changeToken again,
+11:12
+we want to delete the instance
+11:15
+with the ID that we just created.
+11:17
+And to ensure optimistic locking,
+11:21
+I will set the previous versionId field
+11:26
+to the versionId we just received.
+11:31
+Then we send the request,
+11:34
+which is accepted.
+11:41
+And when polling again with the latest deltalink,
+11:46
+we now see that the instance was deleted.
+11:52
+That's it for the demo.
+11:55
+In this unit, you have learned how to test the basic configuration
+12:00
+of consuming or producing clients of SAP Master Data Integration
+12:05
+by directly interacting with the service.
+12:09
+In the steps of this unit,
+12:12
+we have technically mimicked a producing client to test the configuration.
+12:18
+Check out the previous units
+12:20
+to refresh your memory on SAP Master Data Integration
+12:23
+or Master Data Orchestration.
+12:27
+In particular, we required an application access token for this unit.
+12:32
+You can find more information on that
+12:34
+in the SAP Help documentation
+12:37
+on how to get an application access token.
+12:42
+Now we've reached the end of this unit and this week.
+12:47
+Thank you for listening, and see you next week.
+Discussion topics
+5 topics
+(00:00)
+Test Postman Script
+13 replies
+Hello,
+
+could you please share the script you demoed so we can test too?
+
+Thanks Stefan
+
+Read more
+(00:00)
+Query on the Terms of Use
+1 reply
+Hi there,
+
+Is there a specific reason why the Third Party Systems are not allowed to directly integrate with MDI?
+
+Even if they are okay to align...
+
+Read more
+(00:00)
+Not able to test configuration
+6 replies
+I have done following things. 1. Created MDI instance in sub account, 2. Generated service keys. 3. Subscribed to MDO. 4. Created distribution...
+
+Read more
+(00:00)
+Not able to replicate distribution flow
+2 replies
+I am trying to achieve cost center replication from S4HANA cloud to SFSF and I have done these steps: Created service instances, service keys,...
+
+Read more
+(00:00)
+MDO subscription fails
+1 reply
+I am able to create MDI instance. able to connect via postman but when i go and create MDO subscription, it fails with internal server error. is...
+
+Read more
+
+The discussions for this course are read-only. No new topics or replies can be created.
+
+‹
+Previous
+
+Unit 6: Self-test
+Next
+
+Assignment Week 1
+›
+Hide navigation
+Overview
+Week 1
+Assignment Week 1
+Discussions
+Week 2
+Week 3
+I Like, I Wish
+Final Exam
+More information
+About Us
+Course Reactivation
+Blog
+SAP Learning
+Polls
+Help
+FAQ
+Certificate Guidelines
+Digital Badges
+Code of Honor
+Forum Rules
+Peer Assessment
+Helpdesk
+Follow us
+X, formerly Twitter
+SAP Community Network
+About openSAP
+openSAP is SAP’s free learning platform for everyone interested in learning about SAP’s latest innovations and how to survive in the digital economy. openSAP Enterprise MOOCs are complete courses, and learners can earn a certificate to demonstrate the knowledge they’ve acquired. Complementary learning opportunities exist in the form of openSAP Podcasts and openSAP Microlearning.
+
+Download on the App StoreGet it on Google Play
+© 2013 - 2024 Copyright SAP – Legal DisclosurePrivacyTerms of UseCookie StatementCookie 喜好设置Powered by HPIopenHPI (r8552)
+
