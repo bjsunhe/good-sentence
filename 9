@@ -1,0 +1,463 @@
+openSAP logo
+
+Channels
+Courses
+
+Further Learning
+News
+
+English
+
+SAP Master Data Integration in the Intelligent EnterpriseFeaturing experts from the MDI and MDO team
+Self-paced course
+Learnings
+Discussions
+Progress
+Collab Space
+Course Details
+Announcements
+
+Unit 1: SAP Master Data Integration in the Recruit to Retire scenario
+Duration: approx. 12 minutes
+Hello and welcome to the openSAP course,
+
+
+
+00:05 / 11:12
+
+
+
+
+
+00:05
+Hello and welcome to the openSAP course,
+00:08
+SAP Master Data Integration in the Intelligent Enterprise,
+00:12
+week two, unit one,
+00:15
+Master Data Integration in the Recruit to Retire scenario.
+00:19
+My name is Vishal Trivedi
+00:21
+and I am with the Master Data Integration product management team.
+00:26
+Let us start by looking at how SAP is transforming
+00:30
+its support for HR business processes
+00:33
+by redefining the overall HR process strategy.
+00:39
+SAP has multiple solutions in the HR space,
+00:42
+focusing on individual use cases and LoBs.
+00:46
+For example, SAP SuccessFactors,
+00:49
+SAP S/4HANA, SAP Fieldglass, and SAP Concur.
+00:55
+These best-of-breed solutions
+00:57
+allow customers the flexibility
+01:00
+to innovate for the individual LoBs at their own pace.
+01:04
+However, what SAP brings to the customers
+01:08
+is a holistic suite of integrated offerings
+01:11
+on the Business Technology Platform,
+01:14
+which allow their business HR leaders
+01:17
+to offer exceptional experiences to the workforce,
+01:22
+as well as help their businesses grow
+01:25
+while keeping operational costs in check.
+01:28
+These integrated solutions allow HR leaders
+01:32
+to execute on their business transformation goals
+01:35
+and help them create the workforce of the future.
+01:42
+By now, this slide must be familiar to you.
+01:45
+SAP focuses now on delivering end-to-end business processes,
+01:50
+which span across all business functions.
+01:53
+The Recruit to Retire is one such process,
+01:56
+which encompasses SAP SuccessFactors, SAP Concur,
+02:00
+SAP Fieldglass, SAP Analytics Cloud,
+02:04
+and last but not the least, SAP S/4HANA.
+02:08
+These solutions target HR, travel,
+02:12
+controlling, and procurement enterprise functions.
+02:16
+Like other end-to-end business processes,
+02:19
+Recruit To Retire is also based
+02:21
+on the SAP Business Technology Platform,
+02:24
+which offers Master Data Integration as a core service.
+02:31
+Now let's take a look at what's the main objective
+02:34
+of Recruit to Retire.
+02:36
+What is the business problem the process is trying to solve?
+02:41
+Recruit to Retire strives to make
+02:43
+the workforce experience exceptional.
+02:47
+It enables understanding, managing, and optimizing
+02:52
+of all aspects of workforce management
+02:55
+in line with the business objectives.
+02:58
+Recruit to Retire is defined to cover the complete scope
+03:01
+of workforce management - planning, staffing, onboarding,
+03:07
+the actual working, travel, and settlement.
+03:12
+The process itself comprises of three main subprocesses -
+03:16
+Hire to Retire, which is focused on the lifecycle
+03:20
+of an internal employee,
+03:22
+Travel to Reimburse,
+03:23
+covering the travel and expense management aspects,
+03:26
+and then the External Workforce-focused
+03:29
+lifecycle management for an external employee.
+03:36
+The fundamental element
+03:38
+of building this end-to-end integrated workforce experience
+03:41
+is a unified data model,
+03:43
+which all participating applications have agreed on.
+03:48
+This is essential because all applications
+03:52
+need to speak the same language,
+03:55
+and without this, we cannot ensure
+03:59
+standard suite qualities for the process.
+04:03
+These aligned data models ensure consistent data
+04:07
+across the complete process value chain,
+04:10
+enabling data-driven insights and decisions.
+04:14
+Technically, aligned data models allow for
+04:18
+out-of-the-box SAP-to-SAP integration,
+04:21
+and also allow us to offer consistent APIs,
+04:25
+which are based on open standards.
+04:31
+The participating LoBs of the Recruit to Retire process
+04:35
+have agreed on and aligned people data model,
+04:39
+which covers important aspects
+04:41
+of the human attributes of the person, or the workforce,
+04:46
+like addresses, personal details,
+04:50
+communication preferences, and so on.
+04:52
+And then professional attributes, like job assignment,
+04:57
+payment methods, bank information, and so on.
+05:01
+The essential principle is to support the fact
+05:05
+that a person can have multiple work assignments.
+05:13
+Now that we have understood the need
+05:15
+of the unified data model,
+05:17
+and what a unified data model example looks like,
+05:20
+that is the people data model,
+05:22
+which we covered in the previous slide,
+05:25
+we get to the point where we need to understand
+05:27
+how this data is exchanged between the various participants
+05:32
+of the Recruit to Retire process.
+05:35
+This is where the Master Data Integration service steps in.
+05:38
+In the past, in order to share the information,
+05:42
+applications would have modeled and implemented
+05:45
+many point-to-point interconnections,
+05:48
+which are a nightmare to manage and maintain.
+05:53
+However, with the introduction of MDI,
+05:56
+we have a central service,
+05:58
+which makes the distribution of information
+06:01
+more efficient and optimized.
+06:04
+The idea is to enable a hub-spoke model,
+06:08
+which ensures consistent, scalable, compliant,
+06:13
+and purpose-driven master data replication,
+06:16
+even keeping DPP constraints in mind.
+06:20
+So MDI is like a central pipe
+06:23
+to which both the producing
+06:26
+and the consuming applications connect
+06:28
+in order to get the same view of the master data object.
+06:33
+MDI also speaks the same language
+06:36
+of the aligned one data model.
+06:45
+The next slide explains the interactions in more detail.
+06:51
+As mentioned previously, MDI provides a central pipe
+06:55
+to which both the producing
+06:57
+and the consuming applications connect.
+07:00
+It's important to understand that an application
+07:03
+can be both a producer as well as a consumer.
+07:08
+As outlined here, SAP SuccessFactors
+07:12
+is writing workforce person to MDI,
+07:16
+and then SAP S/4 is reading the workforce person from MDI.
+07:20
+The interaction gets reversed
+07:22
+when we talk about the cost center.
+07:24
+Here, SAP S/4 writes cost centers to MDI
+07:28
+and SuccessFactors receives them.
+07:31
+These interaction patterns are actually defined
+07:34
+by the business process flows.
+07:41
+When we go into the details of the process itself,
+07:44
+we see that "Cost center" element, "WBS" element,
+07:49
+"Bank" master data is owned by S/4
+07:52
+and is written to MDI by S/4.
+07:55
+The information is received by
+07:57
+SuccessFactors and Fieldglass.
+08:00
+SuccessFactors owns the workforce person object,
+08:03
+and the organization unit, as well as job details.
+08:07
+These are written to MDI by SuccessFactors.
+08:11
+Fieldglass owns and writes the external worker.
+08:15
+Based on business process needs,
+08:17
+new one data model objects are defined
+08:21
+and made available for consumption through MDI.
+08:25
+The definition and the rollout
+08:29
+of new data model objects is a continuous process
+08:33
+and goes on as the business processes evolve.
+08:42
+The concepts outlined in the previous slide
+08:44
+are further elaborated in the slide
+08:48
+which is on the screen now
+08:49
+and also the subsequent picture you will see.
+08:53
+Here in this particular picture,
+08:54
+we are talking about the financial data flow
+08:57
+across the Hire to Retire subprocess.
+09:01
+As you can see,
+09:03
+various components within the SuccessFactors and S/4 solutions
+09:07
+are communicating with each other
+09:09
+with data replication supported by MDI.
+09:18
+Similar to the financial data flows,
+09:20
+we have the HR data flow
+09:23
+flowing across the process landscape.
+09:26
+The workforce person itself is comprising information
+09:30
+from various sub-components of SuccessFactors.
+09:37
+So let us now summarize what we covered in this unit.
+09:41
+A smooth-running Recruit to Retire process
+09:44
+is critical for business continuity and remote work,
+09:48
+as well as ensuring exceptional workforce experience
+09:53
+for all kinds of workers.
+09:55
+By using aligned data models and MDI,
+09:58
+we provide an end-to-end experience,
+10:01
+which is comprehensive, has low-maintenance overheads,
+10:05
+and ensures harmonized suite qualities.
+10:14
+For colleagues who are interested
+10:16
+in learning more on Recruit to Retire,
+10:19
+I have listed some blogs, process blueprints,
+10:23
+and public roadmaps.
+10:25
+Please feel free to explore the links provided here.
+10:31
+We also have openSAP courses focusing on this end-to-end process,
+10:36
+which you're welcome to explore.
+10:41
+With that, we come to the end of the session.
+10:44
+Thank you for staying on,
+10:46
+and I hope you enjoyed it
+10:48
+as much as I enjoyed bringing it to you.
+10:52
+In case you are interested to know how MDI is being used
+10:55
+in other business processes,
+10:57
+I would encourage you to take the course titled
+11:00
+SAP Master Data Integration in the Lead to Cash Scenario.
+11:04
+Thank you again and goodbye.
+Discussion topics
+3 topics
+(00:00)
+Not able to launch video.
+8 replies
+Hello Team Is anyone else facing the same issue?
+
+Regards
+
+Read more
+(00:00)
+MDI with Integration Suite
+1 reply
+Hi team,
+
+I am interested to understand how MDI communicates with the Integration Suite offered through BTP, and why this would be required if we...
+
+Read more
+(00:00)
+Is Integration between SAP SuccessFactors Employee Central and SAP Employee Central Payroll going to go via MDI
+1 reply
+Hi team,
+
+Integration between SF EC and SF ECP is still a point-to-point integration. Is there any plan to migrate to MDI?
+
+Regards Stev
+
+Read more
+The discussions for this course are read-only. No new topics or replies can be created.
+
+‹
+Previous
+
+Welcome to Week 2
+Next
+
+Unit 1: Self-test
+›
+Hide navigation
+Overview
+Week 1
+Week 2
+Assignment Week 2
+Discussions
+Week 3
+I Like, I Wish
+Final Exam
+More information
+About Us
+Course Reactivation
+Blog
+SAP Learning
+Polls
+Help
+FAQ
+Certificate Guidelines
+Digital Badges
+Code of Honor
+Forum Rules
+Peer Assessment
+Helpdesk
+Follow us
+X, formerly Twitter
+SAP Community Network
+About openSAP
+openSAP is SAP’s free learning platform for everyone interested in learning about SAP’s latest innovations and how to survive in the digital economy. openSAP Enterprise MOOCs are complete courses, and learners can earn a certificate to demonstrate the knowledge they’ve acquired. Complementary learning opportunities exist in the form of openSAP Podcasts and openSAP Microlearning.
+
+Download on the App StoreGet it on Google Play
+© 2013 - 2024 Copyright SAP – Legal DisclosurePrivacyTerms of UseCookie StatementCookie 喜好设置Powered by HPIopenHPI (r8552)
+
