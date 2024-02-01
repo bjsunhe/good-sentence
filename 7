@@ -1,0 +1,1011 @@
+openSAP logo
+
+Channels
+Courses
+
+Further Learning
+News
+
+English
+
+SAP Master Data Integration in the Intelligent EnterpriseFeaturing experts from the MDI and MDO team
+Self-paced course
+Learnings
+Discussions
+Progress
+Collab Space
+Course Details
+Announcements
+
+Unit 6: How to use SAP Master Data Orchestration with SAP Master Data Integration
+Duration: approx. 32 minutes
+Hello, and welcome to the openSAP course,
+
+
+
+00:06 / 31:35
+
+
+
+
+
+00:06
+Hello, and welcome to the openSAP course,
+00:09
+SAP Master Data Integration
+00:11
+in the Intelligent Enterprise.
+00:13
+Week one, unit six.
+00:16
+How to use SAP Master Data Orchestration
+00:19
+with SAP Master Data Integration.
+00:22
+My name is still Hans-Ulrich von Helmolt,
+00:24
+and I'm responsible for the development
+00:26
+of SAP Master Data Orchestration.
+00:29
+In the preceding unit, I have given you a first overview
+00:33
+of what SAP Master Data Orchestration is and what it looks like.
+00:40
+For this reason, we start about there
+00:44
+where we stopped recently.
+00:46
+You might remember this slide.
+00:48
+I will not explicitly go through it
+00:50
+because we will see this later in the demo as well.
+00:54
+This slide serves here for you
+00:56
+as a kind of starter to fresh up your memory.
+01:02
+Let us now simply go and dive into the essentials
+01:08
+when we talk about the distribution of master data.
+01:12
+What is actually behind it?
+01:16
+First of all, you will have a data provider,
+01:20
+here at the left-hand side,
+01:22
+and then a final data consumer
+01:26
+at the right-hand side.
+01:28
+They are, of course, mutually connected.
+01:33
+There might be several co-providers
+01:35
+and also several consumers,
+01:37
+not all of them being interested
+01:40
+in the same data object or data.
+01:44
+This is where the filters,
+01:46
+here the legend,
+01:49
+come into the game,
+01:52
+because they define which data goes to which consumer finally.
+01:57
+This is the first important aspect,
+02:01
+and the second follows on the next slide.
+02:07
+What I meant was the distribution mode.
+02:11
+It can be push or pull.
+02:16
+It specifies the active part of the data distribution.
+02:21
+That means who triggers the distribution.
+02:24
+In the pull case, the consumer pulls the data
+02:29
+from the provider.
+02:32
+So a request is sent out to the provider,
+02:36
+and as a response, the consumer gets the master data.
+02:42
+Here, that's very important,
+02:45
+the scheduler is on the consumer side.
+02:50
+In the push case, it's just the other way around.
+02:55
+The provider sends the data to the consumer
+03:01
+and the scheduler is here on this side.
+03:09
+It is one of the most essential things
+03:12
+in master data distribution
+03:14
+with SAP Master Data Orchestration,
+03:17
+and it plays an essential role when MDI comes into place.
+03:23
+Let's move on and see.
+03:27
+This slide, here I show for the first time MDI as a data hub.
+03:35
+I need to explain it in some more detail
+03:38
+because it contains a lot of information.
+03:42
+At the bottom, you can see the landscape
+03:47
+and we have it for the first time that MDI appears.
+03:55
+The initial provider, as on the previous slide,
+04:00
+is on the left-hand side
+04:01
+and the final consumer on the right-hand side.
+04:05
+But now we see Master Data Integration in the middle,
+04:10
+which acts in the distribution process in both roles.
+04:15
+It acts as a consumer when a provider sends data
+04:18
+and as a provider when the consumer receives the data.
+04:23
+As you certainly remember from the previous lectures
+04:26
+about Master Data Integration and its event log,
+04:30
+data from providers, or upstream, has to be pushed.
+04:36
+And a consumer, that is downstream,
+04:39
+needs to pull the data from Master Data Integration.
+04:45
+That is of course true only as long as we talk about
+04:49
+the REST-based communication.
+04:54
+In case of using SOAP, this is only used
+04:59
+from business partner currently.
+05:01
+The story is slightly different
+05:03
+because SOAP messages are also pushed from MDI
+05:08
+to the consumer, as sketched here in this slide.
+05:14
+You see also that then the scheduler indicated
+05:18
+is on the MDI side.
+05:21
+Additionally, we have added a slide recommendation here,
+05:29
+how to name the APIs,
+05:31
+because it makes the identification easier.
+05:35
+So whenever you come from upstream
+05:37
+and use the REST protocol,
+05:40
+simply use MDI_CHANGE
+05:43
+as a prefix, followed by the name of the API.
+05:48
+And on the pull side, use MDI_LOG.
+05:52
+And for SOAP, do use MDI_SOAP.
+06:00
+You don't need to follow this recommendation
+06:05
+but it will help you and make this thing easy.
+06:10
+Now let's come to the table above.
+06:15
+This gives you a little bit of an impression
+06:19
+of what combinations for what protocol are supported.
+06:26
+This table is for sure not complete,
+06:28
+but it's important that you note
+06:32
+what is supported, and how this table has to be interpreted.
+06:39
+For the REST protocol, pull and push is supported.
+06:44
+And in this case, we see that in pull,
+06:53
+the consumer then can be any system
+07:00
+and fetch the data via an API from the provider MDI.
+07:07
+In case of push, then the consumer is always MDI,
+07:14
+and the provider indicated here by the dots is upstream.
+07:22
+And only in the SOAP case, we have only push,
+07:29
+and here it's indicated that MDI
+07:32
+one time acts as a provider, namely when it sends the data,
+07:37
+and one time as a consumer, when it receives the data
+07:42
+from upstream.
+07:45
+We've added here two more important parameters,
+07:49
+namely the package size.
+07:52
+This is an option to parallelize
+07:55
+the transmission of the data.
+07:58
+In the case that MDI is the provider, this is not necessary
+08:04
+and you can always leave it at the proposed default, 1.
+08:12
+The recurrence defines when the model
+08:15
+and how frequently it occurs.
+08:18
+There are certain limits.
+08:20
+If you have the MDI_LOG that is in the pull,
+08:26
+the ABAP library downstream can only schedule
+08:31
+in time units larger than five minutes.
+08:35
+And this is also true for the push.
+08:42
+So this introduced some
+08:44
+of the more important header parameters.
+08:49
+Before we come to the demo,
+08:51
+I shortly want to introduce filters.
+08:56
+The filters provide an important means
+08:59
+to regulate the data flow.
+09:02
+A filter is nothing else than a condition applied
+09:06
+to the master data in replication.
+09:10
+If it applies, so if the logical value is true,
+09:13
+then the data is provided.
+09:16
+The condition in the end is a logical expression
+09:20
+that may contain multiple attributes and values.
+09:25
+The screenshot shows here three lines I have maintained.
+09:31
+I have animated this slide a bit
+09:34
+to make it more visible, better visible.
+09:39
+The logical condition is displayed on the header.
+09:43
+You will see this in the system as well.
+09:46
+And I enlarged this a bit
+09:48
+so that you can read what this basically looks like.
+09:54
+But essentially, this is a part I want to show you now
+09:58
+in the following demonstration,
+10:01
+where we go back to the system.
+10:05
+I sign in to the system, and from the last unit,
+10:11
+you certainly recognize the applications offered here.
+10:20
+And the one we are looking to today
+10:23
+is Manage Distribution Model,
+10:26
+because that's the essential application
+10:29
+we want to work with.
+10:32
+You see, the search screen, it's still empty
+10:35
+because nobody has created a model till now.
+10:38
+So I simply start and create one.
+10:43
+You see here then, the screen opens
+10:46
+and asks you for a model descriptor.
+10:50
+And here you can enter up to 10 digits.
+10:55
+More essential is that you select the business type,
+10:59
+and I have chosen to take here the Workforce Person.
+11:04
+The mode, the package size, and the recurrence pattern
+11:07
+I leave as it is, because for the sake of this demo
+11:10
+it doesn't play a role.
+11:13
+What I would like to recommend
+11:15
+is that you enter a description,
+11:21
+up to 10 digit name of the model,
+11:26
+it appears here, but it doesn't tell you
+11:28
+too much about the scope.
+11:31
+So rather you put it in as a description,
+11:36
+and this will be displayed too.
+11:38
+And if you work in more than one language,
+11:43
+of course in the logon language itself.
+11:47
+So I enter here a descriptor,
+11:53
+and the purpose of it will be to explain the object filter.
+12:00
+And when I hit enter,
+12:02
+then you will see this text appearing here
+12:06
+on the left-hand side.
+12:11
+I now need to specify an API.
+12:15
+I take this one with the highest version.
+12:19
+I have to enter a provider, as we have a pull model,
+12:24
+you might remember the table, it's easy.
+12:29
+The provider is an MDI
+12:32
+and the downstream system can be any that is offered here.
+12:38
+I know that this is an S/4 system,
+12:41
+doesn't play a role for the moment, I just choose it here.
+12:47
+I'm now leaving the application
+12:52
+to point your attention to something
+12:55
+which will then come up.
+12:57
+When I'm leaving, then I will be asked
+13:00
+if I want to create, if I simply want to keep the draft -
+13:04
+all the data that we are editing on the screen
+13:08
+is automatically put in a draft,
+13:11
+and so nothing can get lost -
+13:13
+or if I want to discard it.
+13:14
+In this case, I want to keep the draft only.
+13:20
+So then we are ending up on the overview screen.
+13:26
+I could go away from here and come back
+13:30
+and it would still be here in the draft version.
+13:33
+And as the text said, it is only visible
+13:39
+and editable for me.
+13:41
+And for me, it shows only by the blue bar,
+13:44
+that is what I wanted to show here
+13:46
+that there are unsaved changes of a draft still not active.
+13:52
+So let's go back into it, to the model.
+13:57
+Now I save it, and what you see,
+14:04
+the blue bar has disappeared.
+14:06
+There is some administrative data which appears here,
+14:11
+and then I can activate it.
+14:17
+For the scope of this unit,
+14:21
+it would not have been necessary to activate it
+14:28
+but I want to show you, first of all,
+14:29
+it's shown here that it's active now,
+14:32
+and another fact is the Delete is grayed out.
+14:37
+So only inactive models can be deleted.
+14:42
+That's one important fact you should keep in mind.
+14:45
+And here it is displayed as an active model.
+14:51
+As I want to enter some filters,
+14:56
+I go to the Edit mode,
+14:59
+and here you receive some further important information.
+15:05
+The system tells you you can edit the model,
+15:09
+"Data distribution will continue
+15:13
+as per the last active version of the model."
+15:17
+And it asks you, "Do you want to proceed?"
+15:19
+Of course we want to.
+15:22
+Then you see that you return back to the model.
+15:27
+Point your attention to the fact
+15:29
+that you cannot edit each and every thing,
+15:33
+especially not the API,
+15:35
+especially not provider and consumer.
+15:39
+In addition, you have the option here on the top at any time
+15:44
+to return to the saved version and have a look at it.
+15:49
+I don't want to do this here
+15:52
+because we haven't changed anything yet.
+15:55
+So we go now to the filters,
+15:58
+and these are the object selection filters
+16:01
+that I want to introduce now.
+16:04
+First of all, you see here at the top
+16:07
+they can have a validity.
+16:09
+I don't choose it for now,
+16:12
+but with this you could then restrict
+16:14
+the usage of that model.
+16:20
+I'm now going to add a filter.
+16:24
+First of all, you see here now,
+16:27
+there are certain fields, attributes, which are offered here.
+16:33
+Where do they come from?
+16:36
+That is a part of the definition
+16:38
+of the data model of the application.
+16:41
+That means the LoB, in this case,
+16:46
+SuccessFactors, for instance, or HCM,
+16:50
+decides what is useful and makes sense to use as a filter.
+16:58
+Not every field can be used.
+17:01
+So I decided to use the workforce assignment,
+17:06
+and here, the flag, if this is a contingent worker.
+17:16
+Actually one comment I need to make here
+17:19
+for the moment being, for the values you input,
+17:22
+we don't have value helps.
+17:26
+This is very difficult because this data
+17:29
+is not present in it.
+17:31
+Currently, you need to know what you're entering.
+17:34
+So be a little bit careful, but you can anytime change it.
+17:40
+So I did it, and what you see immediately,
+17:44
+the line appears here in the header and also on the model.
+17:50
+And I've decided now to add some more attributes,
+17:54
+at least to follow the screenshot.
+17:59
+I'm entering here the workforce person, the country of it.
+18:04
+And I enter a second one, let's take Germany.
+18:11
+And then I hit enter, then you see automatically
+18:15
+that the condition is displayed here on the top.
+18:21
+Returning to the screen, the main screen,
+18:25
+then you see that it is displayed here as well.
+18:30
+I now save and activate it, only that you have seen it.
+18:38
+It shows you, okay, it's now active,
+18:41
+and we see it here, it's now active in the changed version.
+18:49
+So let's return.
+18:53
+We want now to continue.
+18:57
+I've decided this time to deactivate it
+19:02
+and to show you this message here,
+19:04
+"Deactivating this model will stop the data distribution."
+19:08
+you're getting told.
+19:12
+And then we can go back and edit it.
+19:18
+As indicated, when I hit Edit,
+19:21
+now no message is displayed any longer.
+19:25
+And I have decided myself to enter a new condition
+19:31
+on the object page, namely take an arbitrary one,
+19:37
+the cost center ID,
+19:39
+and I put in here cost center 0001
+19:42
+in this case, and Apply.
+19:44
+You now see it is shown as an additional line
+19:49
+in the condition overview.
+19:51
+That means it is evaluated in the sequence you see here.
+19:59
+So first then the system checks
+20:02
+if the cost center ID is 0001.
+20:07
+If this condition applies, then the second one
+20:10
+is not any longer checked
+20:12
+as the logical union of these two statements.
+20:16
+If this does not apply, then the second condition is checked.
+20:21
+And only when that is true,
+20:24
+then the replication starts.
+20:27
+For the moment being,
+20:31
+I just save this
+20:33
+and I leave the model.
+20:38
+I now want to enter a second model.
+20:42
+This time I have decided to create a distribution model
+20:49
+for a business partner.
+20:52
+This is determined in the very moment
+20:54
+when I choose the corresponding business object type,
+20:58
+all the other things I don't want to change here.
+21:03
+I enter, as I did it before for identification purposes,
+21:09
+a name for this model, what it does.
+21:20
+And I want to introduce the scope filter.
+21:27
+Sorry for the typos.
+21:31
+It's not essential, but I want to remove it
+21:34
+so it looks better.
+21:37
+And I enter then the API.
+21:41
+This time I choose the SOAP interface.
+21:46
+The other two for REST are also present.
+21:51
+And then I create the provider
+21:57
+and the provider, in this case,
+22:00
+as we have a pull distribution, is again MDI,
+22:04
+and the consumer can be any system which is capable.
+22:09
+I take the one we're already familiar with.
+22:13
+I have decided that we only want to distribute
+22:18
+customer data for an organization.
+22:26
+And therefore I need to specify the appropriate role,
+22:31
+which I apply now.
+22:34
+Okay, we are now going to define a data scope filter.
+22:39
+Data scope filter is a little bit different
+22:42
+to the object filter because it determines
+22:45
+what data is replicated.
+22:49
+First of all, you have here on the top,
+22:52
+I won't use it, the cutoff date.
+22:55
+The cutoff date is an elegant option
+22:57
+that all nodes in the object model which contain validities,
+23:01
+or even temporal data, are only taken into account
+23:05
+when the validity interval contains the cutoff date.
+23:09
+The system applies this condition automatically at activation.
+23:19
+I now define a data scope filter,
+23:25
+and I have decided, for this example,
+23:27
+I want to filter by sales organization.
+23:30
+This should be equal to 0001,
+23:34
+and only take into account also distribution channels,
+23:44
+a specific distribution channel, again, a 01.
+23:50
+And that's it, this would mean only sales arrangements
+23:54
+of that specific business partner would be distributed
+23:59
+if they belong to sales organization 0001
+24:02
+and distribution channel 01.
+24:07
+Another feature here that exists
+24:09
+also for object filters, of course,
+24:12
+is the exclude condition.
+24:15
+So if you want to exclude something,
+24:18
+then you can elegantly specify it here.
+24:24
+And in this case, I chose the division.
+24:27
+I just want to exclude division 05.
+24:31
+And that means, in total,
+24:33
+all data from sales organization 0001, distribution channel 01,
+24:39
+but not division 05, are then distributed.
+24:47
+With this, I want to finish the demonstration
+24:52
+and go back to the slides,
+24:57
+and continue here on the next slide,
+25:00
+which basically summarizes what you have currently seen.
+25:07
+Namely, that we have two different kinds of filters -
+25:10
+object filter, which is evaluated first,
+25:13
+and only when this is true
+25:15
+then the data scope filter is evaluated.
+25:20
+On the bottom of this slide,
+25:23
+I mention here that we have display-only filters.
+25:27
+They belong to SAP Data Privacy Integration.
+25:31
+Due to a technical problem, it is currently
+25:35
+unfortunately not possible to show this in the system,
+25:39
+but I can tell you what I will do then in the next slide.
+25:45
+The content is provided by Business Context Management,
+25:50
+and the master data header of the data
+25:54
+which is going to be distributed
+25:56
+normally contains this business context.
+25:59
+And only when this matches the definition,
+26:03
+then it's being distributed to the receiving system.
+26:08
+This should make sure that only non-sensitive data
+26:14
+is replicated depending on its business context.
+26:19
+A simple example for this
+26:21
+is you don't want to replicate salary data
+26:27
+of an employee to an instance
+26:29
+where you only do the reimbursement of travels.
+26:35
+So on the next slide, you see then
+26:41
+the Business Context Management introduced,
+26:45
+which lets you control data privacy-relevant
+26:48
+aspects of master data based on the context,
+26:51
+sometimes also known as purpose.
+26:55
+This purpose acts as a filter for data.
+26:58
+The business context is activated
+27:00
+in the application per object type,
+27:03
+and at this moment pulled from BCM.
+27:06
+I have shown this in the first session in the first unit,
+27:09
+but I'm not sure if you remember it,
+27:14
+but you will see it in case you need it.
+27:17
+A distribution model with BCM as customer
+27:21
+is automatically generated.
+27:24
+In this distribution model, the business context
+27:27
+is then displayed, no maintenance per customer.
+27:32
+A customer may have multiple business contexts, of course.
+27:37
+At runtime, master data is filtered by the business context.
+27:42
+And only if the business context
+27:46
+in the header data of the payload matches,
+27:49
+then the data is replicated.
+27:53
+Currently, this filter is active
+27:56
+only for the complete master data record.
+27:59
+That means it acts as an object filter.
+28:03
+Master data without a business context
+28:07
+will be sent to Business Context Management
+28:10
+for default business context assignment.
+28:14
+Master data is then sent back
+28:17
+to SAP Master Data Integration.
+28:20
+If there is no business context for a master data record
+28:25
+or a customer, then the data will not be replicated
+28:34
+In the next slide, I finally compiled some useful notes
+28:38
+which you should keep in mind
+28:40
+when you start to work with Master Data Orchestration.
+28:47
+A model can be only defined per object type
+28:52
+and API versions.
+28:55
+Even more important,
+28:57
+for a specific provider-consumer connection,
+29:00
+there can be only one model.
+29:04
+A model can, of course, have multiple providers with one consumer,
+29:08
+or multiple consumers with one provider.
+29:13
+For MDI as a provider, only one consumer per model is recommended -
+29:20
+this has overview purposes.
+29:23
+Technically, it's possible to assign it.
+29:27
+The key mapping settings in the model
+29:29
+are only active for SOAP-based replication.
+29:33
+Therefore, I haven't shown this in more detail.
+29:38
+When you work on active models,
+29:43
+then there are some runtime implications.
+29:46
+I've mentioned a few.
+29:49
+Editing active models doesn't stop replication.
+29:54
+Explicit deactivation is necessary.
+29:59
+The change of API version
+30:02
+normally requires an initial replication of the model.
+30:07
+This then needs to be manually started
+30:10
+in order to let the user himself decide about the necessity.
+30:23
+Now, at the end of this unit,
+30:27
+you should understand how the distribution models work.
+30:32
+You should know how to set up
+30:34
+and maintain distribution models.
+30:37
+And you understand basically the relation
+30:40
+between Business Context Management and distribution models.
+30:46
+For further reasons, I again have shown here
+30:50
+the two links to the documentation
+30:53
+of SAP Master Data Integration
+30:56
+and SAP Master Data Orchestration as well.
+31:02
+You have now reached the end of this unit,
+31:06
+and you certainly understand now better
+31:08
+how to handle SAP Master Data Orchestration
+31:12
+and SAP Master Data Integration.
+31:15
+I thank you very much for participating,
+31:18
+your attention and the interest,
+31:20
+and I wish you a lot of fun
+31:23
+with the upcoming lectures
+31:26
+that you certainly and hopefully will follow.
+31:28
+Thank you.
+Discussion topics
+4 topics
+(00:00)
+SOAP Protocol allowed for both Push and Pull mode?
+2 replies
+During the table walkthrough, it was mentioned that only in SOAP cases, we have PUSH (from 07:23 - 07:32), but during the demo, we created Business...
+
+Read more
+(00:00)
+Is master data orchestration an on-prem tool or cloud solution?
+2 replies
+Hi Experts,
+
+I understand that the master data integration service runs on BTP and can connect to various cloud as well as on-prem solutions....
+
+Read more
+(00:00)
+Video not loading
+9 replies
+AM not able to load the videos today
+
+Read more
+(00:00)
+MDO Subscription failure
+1 reply
+not able to subscribe to MDO. when clicked on create, it fails every single time. Not sure where to raise a ticket for it.
+
+Read more
+The discussions for this course are read-only. No new topics or replies can be created.
+
+‹
+Previous
+
+Unit 5: Self-test
+Next
+
+Unit 6: Self-test
+›
+Hide navigation
+Overview
+Week 1
+Assignment Week 1
+Discussions
+Week 2
+Week 3
+I Like, I Wish
+Final Exam
+More information
+About Us
+Course Reactivation
+Blog
+SAP Learning
+Polls
+Help
+FAQ
+Certificate Guidelines
+Digital Badges
+Code of Honor
+Forum Rules
+Peer Assessment
+Helpdesk
+Follow us
+X, formerly Twitter
+SAP Community Network
+About openSAP
+openSAP is SAP’s free learning platform for everyone interested in learning about SAP’s latest innovations and how to survive in the digital economy. openSAP Enterprise MOOCs are complete courses, and learners can earn a certificate to demonstrate the knowledge they’ve acquired. Complementary learning opportunities exist in the form of openSAP Podcasts and openSAP Microlearning.
+
+Download on the App StoreGet it on Google Play
+© 2013 - 2024 Copyright SAP – Legal DisclosurePrivacyTerms of UseCookie StatementCookie 喜好设置Powered by HPIopenHPI (r8552)
+
